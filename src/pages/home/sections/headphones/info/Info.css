@@ -1,0 +1,15 @@
+.headphones__info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+}
+.headphones__info-title{
+    font-weight: 600;
+    font-size: 17px;
+    color: #1c1c27;
+}
+.headphones__info-price{
+    font-weight: 600;
+    font-size: 17px;
+    color: #ffa542;
+}

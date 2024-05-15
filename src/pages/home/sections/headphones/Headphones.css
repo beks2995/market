@@ -1,3 +1,9 @@
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    color: #838383;
+    margin-bottom: 20px;
+}
 .headphones{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -17,33 +23,12 @@
     display: flex;
     gap: 24px;
 }
-.headphones__favorite{
-    border: 0;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-}
 .headphones__card-img{
     width: 219px;
     height: 237px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.headphones__info{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 55px;
-}
-.headphones__info-title{
-    font-weight: 600;
-    font-size: 17px;
-    color: #1c1c27;
-}
-.headphones__info-price{
-    font-weight: 600;
-    font-size: 17px;
-    color: #ffa542;
 }
 .headphones__estimation{
     display: flex;

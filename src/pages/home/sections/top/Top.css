@@ -7,9 +7,7 @@
     align-items: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     background: #101010;
-    margin-top: 22px;
-    box-sizing: border-box;
-    margin: 0px 165px 0px 165px;
+    margin: 22px 165px 37px 165px;
 }
 .top__text{
     color: #fff;
