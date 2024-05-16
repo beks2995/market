@@ -3,6 +3,7 @@ import ImageContainer from "../../components/Product/ImageContainer";
 import PriceTag from "../../components/Product/PriceTag";
 import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
+import {  Collapse, Divider  } from "antd";
 
 export default function ProductPage() {
   const images = [
@@ -31,11 +32,21 @@ export default function ProductPage() {
           <PriceTag newPrice={2000} oldPrice={3000} discount={20} />
         </div>
       </div>
-      <div className="relative grid items-start grid-cols-4 gap-5 bg-blue-200">
-        <div className="col-span-3 bg-blue-400 ">
-          
+      <div className="relative grid items-start grid-cols-4 gap-5">
+        <div className="col-span-3 ">
+          <Collapse
+            items={[
+              {
+                key: "1",
+                label: "This is large size panel header",
+                children: <p>{"text"}</p>,
+              },
+            ]}
+            defaultActiveKey={['1']}
+            expandIconPosition={"end"}
+          />
         </div>
-        <div className="sticky top-0 bg-red-300">
+        <div className="sticky top-0">
           <Button classes="mb-4">Купить!</Button>
           <Button>
             <ShoppingCartIcon className="h-6 mr-3 " />
