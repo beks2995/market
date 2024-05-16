@@ -5,6 +5,9 @@
     margin-bottom: 20px;
 }
 .headphones{
+    margin: 0px 165px;
+}
+.headphone{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
@@ -33,6 +36,7 @@
 .headphones__estimation{
     display: flex;
     margin-top: 9px;
+    gap: 8px;
 }
 .headphones__estimation-text{
     font-weight: 600;

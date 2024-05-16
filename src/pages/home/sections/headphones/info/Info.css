@@ -9,7 +9,16 @@
     color: #1c1c27;
 }
 .headphones__info-price{
+    text-align: center;
+}
+.headphones__price-after{
     font-weight: 600;
     font-size: 17px;
+    color: #ffa542;
+}
+.headphones__price-before{
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: line-through;
     color: #ffa542;
 }

@@ -1,7 +1,7 @@
 .top{
     display: flex;
     border-radius: 30px;
-    width: 1110px;
+    /* width: 1110px; */
     height: 197px;
     justify-content: center;
     align-items: center;

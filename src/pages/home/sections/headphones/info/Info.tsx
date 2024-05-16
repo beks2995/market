@@ -10,8 +10,8 @@ const Info: React.FC<Iprop> = ({el}) => {
         <div className="headphones__info">
             <b className="headphones__info-title">{el.name}</b>
             <div className="headphones__info-price">
-                <p>{el.priceAfterDiscount}</p>
-                <p>{el.priceBeforeDiscount}</p>
+                <p className="headphones__price-after">{el.priceAfterDiscount}</p>
+                <p className="headphones__price-before">{el.priceBeforeDiscount}</p>
             </div>
         </div>
     )
