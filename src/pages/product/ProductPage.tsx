@@ -13,21 +13,26 @@ export default function ProductPage() {
 
   return (
     <section className="container mx-auto mt-4">
-      <h1 className="text-dark-100 font-semibold text-xl mb-5">
+      <h1 className="mb-5 text-xl font-semibold text-dark-100">
         Автодержатель
       </h1>
       <div className="bg-white rounded-[30px] p-8">
         <div className="flex items-start justify-between">
-          <i className="bi bi-heart text-dark-200 text-xl text-stroke-1"></i>
+          <i className="text-xl bi bi-heart text-dark-200 text-stroke-1"></i>
           <img src="/images/brand-1.png" alt="brand" />
         </div>
         <ImageContainer images={images} />
-        <div className="flex justify-between mt-7 items-end">
-          <p className="uppercase font-semibold text-dark-200 text-lg md:text-xl lg:text-2xl">
+        <div className="flex items-end justify-between mt-7">
+          <p className="text-lg font-semibold uppercase text-dark-200 md:text-xl lg:text-2xl">
             BOROFONE BH32
           </p>
           <PriceTag newPrice={2000} oldPrice={3000} discount={20} />
         </div>
+      </div>
+      <div className="grid grid-cols-4 gap-5 bg-blue-200">
+        <div className="col-span-3 bg-blue-400">hello</div>
+        <div className="bg-blue-300">world</div>
+        
       </div>
     </section>
   );
