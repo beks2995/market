@@ -1,7 +1,7 @@
 import React from "react";
 import ImageContainer from "../../components/Product/ImageContainer";
 import PriceTag from "../../components/Product/PriceTag";
-import {HeartIcon, ShoppingCartIcon} from '@heroicons/react/24/outline';
+import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
 
 export default function ProductPage() {
@@ -20,7 +20,7 @@ export default function ProductPage() {
       </h1>
       <div className="bg-white rounded-[30px] p-8">
         <div className="flex items-start justify-between">
-          <HeartIcon className="h-8 text-dark-200"/>
+          <HeartIcon className="h-8 text-dark-200" />
           <img src="/images/brand-1.png" alt="brand" />
         </div>
         <ImageContainer images={images} />
@@ -32,12 +32,16 @@ export default function ProductPage() {
         </div>
       </div>
       <div className="relative grid items-start grid-cols-4 gap-5 bg-blue-200">
-        <div className="col-span-3 bg-blue-400 ">hello</div>
+        <div className="col-span-3 bg-blue-400 ">
+          
+        </div>
         <div className="sticky top-0 bg-red-300">
           <Button classes="mb-4">Купить!</Button>
-          <Button><ShoppingCartIcon className="h-6 mr-3 "/>Добавить в корзину</Button>
-          </div>
-        
+          <Button>
+            <ShoppingCartIcon className="h-6 mr-3 " />
+            Добавить в корзину
+          </Button>
+        </div>
       </div>
     </section>
   );
