@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "service uslovie magazin/src/components", "src/pages/UslovieService", "src/pages/Contacts"  ]
 }

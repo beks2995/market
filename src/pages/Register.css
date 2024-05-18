@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    font-family: var(--font-family);
+}
+
+.login-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 30px;
+
+    padding: 23px 38px 38px 38px;
+}
+
+.login-div h3 {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 17px;
+    color: #000;
+}
+
+.login-div__closeButton {
+    position: absolute;
+    top: 9px;
+    right: 19px;
+}
+
+.login-div__closeButton:hover{
+    cursor: pointer;
+}
+
+.login-div__form {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+    padding-top: 34px;
+}
+
+.login-div__form__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+
+}
+
+label {
+    position: relative;
+}
+
+label::after {
+    background: url("data:image/svg+xml,%3Csvg width='19' height='18' viewBox='0 0 19 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.1131 6.65679L11.7274 5.24279L2.59965 14.5568V15.9708H3.98537L13.1131 6.65679ZM14.4988 5.24279L15.8845 3.82879L14.4988 2.41479L13.1131 3.82879L14.4988 5.24279ZM4.79681 17.9708H0.639648V13.7278L13.8059 0.292787C13.9897 0.105316 14.2389 0 14.4988 0C14.7587 0 15.0079 0.105316 15.1917 0.292787L17.9641 3.12179C18.1478 3.30931 18.251 3.56362 18.251 3.82879C18.251 4.09395 18.1478 4.34826 17.9641 4.53579L4.79779 17.9708H4.79681Z' fill='%238E8E8E' /%3E%3C/svg%3E") center / contain no-repeat;
+    position: absolute;
+    content: ' ';
+    top: 14px;
+    right: 13px;
+    width: 19px;
+    height: 18px;
+}
+
+.login-div__form__inp {
+    background: #d6d6d6;
+    border-radius: 15px;
+    border: none;
+    padding: 14px 178px 13px 14px;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.login-div__form__submitButton {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(67, 216, 84, 0.25);
+    background: #101010;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    padding: 13px 18px 14px 10px;
+    margin-bottom: 10px;
+}
+
+.login-div__form__submitButton:hover{
+    cursor: pointer;
+}
+
+.login-div__form__googleButton{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(67, 216, 84, 0.25);
+    background: #101010;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    padding: 13px 18px 14px 10px;
+    width: 100%;
+    margin-top: 10px;
+}

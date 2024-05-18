@@ -1,0 +1,24 @@
+.card__info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+}
+.card__info-title{
+    font-weight: 600;
+    font-size: 17px;
+    color: #1c1c27;
+}
+.card__info-price{
+    text-align: center;
+}
+.card__price-after{
+    font-weight: 600;
+    font-size: 17px;
+    color: #ffa542;
+}
+.card__price-before{
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: line-through;
+    color: #ffa542;
+}
