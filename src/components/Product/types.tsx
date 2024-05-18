@@ -5,3 +5,12 @@ export type PriceTagProps = {
   oldPrice: number;
   discount: number;
 };
+
+export type CollapseProps={
+  children:React.ReactNode;
+}
+
+export type ButtonProps={
+  children: React.ReactNode;
+  classes?:string;
+}

@@ -1,10 +1,8 @@
 import React from "react";
-import ImageContainer from "../../components/Product/ImageContainer";
-import PriceTag from "../../components/Product/PriceTag";
-import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
 import Collapse from "../../components/Product/Collapse";
-// import {  Collapse, Divider  } from "antd";
+import ProductInfoCard from "../../components/Product/ProductInfoCard";
 
 export default function ProductPage() {
   const images = [
@@ -20,19 +18,7 @@ export default function ProductPage() {
       <h1 className="mb-5 text-xl font-semibold text-dark-100">
         Автодержатель
       </h1>
-      <div className="bg-white rounded-[30px] p-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
-        <div className="flex items-start justify-between">
-          <HeartIcon className="h-8 text-dark-200" />
-          <img src="/images/brand-1.png" alt="brand" />
-        </div>
-        <ImageContainer images={images} />
-        <div className="flex items-end justify-between mt-7">
-          <p className="text-lg font-semibold uppercase text-dark-200 md:text-xl lg:text-2xl">
-            BOROFONE BH32
-          </p>
-          <PriceTag newPrice={2000} oldPrice={3000} discount={20} />
-        </div>
-      </div>
+      <ProductInfoCard name="BOROFONE BH32" brand="/images/brand-1.png" images={images} newPrice={2400} oldPrice={3000} discount={20}/>
       <div className="relative grid items-start grid-cols-4 gap-5 mt-6">
         <div className="col-span-3 ">
          <Collapse>hello world</Collapse>

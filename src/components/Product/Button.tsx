@@ -1,9 +1,5 @@
 import React from 'react'
-
-type ButtonProps={
-    children: React.ReactNode;
-    classes?:string;
-}
+import { ButtonProps } from './types'
 
 function Button({children, classes}:ButtonProps) {
   return (
