@@ -4,15 +4,15 @@
     color: #838383;
     margin-bottom: 20px;
 }
-.headphones{
+.products{
     margin: 0px 165px;
 }
-.headphone{
+.cards{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
 }
-.headphones__card{
+.card{
     display: flex;
     flex-direction: column;
     border-radius: 30px;
@@ -22,24 +22,24 @@
     background: #fff;
     padding: 15px 21px 32px 21px;
 }
-.headphones__card-top{
+.card__top{
     display: flex;
     gap: 24px;
 }
-.headphones__card-img{
+.card__top-img{
     width: 219px;
     height: 237px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.headphones__estimation{
+.card__estimation{
     display: flex;
     margin-top: 9px;
     gap: 8px;
     align-items: end;
 }
-.headphones__estimation-text{
+.card__estimation-text{
     font-weight: 600;
     font-size: 17px;
     color: #838383;
