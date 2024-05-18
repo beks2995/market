@@ -8,4 +8,5 @@ export interface Idata {
     name: string;
     priceAfterDiscount: string;
     priceBeforeDiscount: string;
+    isSaveLocal? : boolean
 }

@@ -37,6 +37,7 @@
     display: flex;
     margin-top: 9px;
     gap: 8px;
+    align-items: end;
 }
 .headphones__estimation-text{
     font-weight: 600;

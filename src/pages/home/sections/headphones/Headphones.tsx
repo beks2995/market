@@ -15,11 +15,22 @@ const Headphones: React.FC = () => {
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data());
             });
-            console.log(arr);
-            setData(arr)
+            setData(arr.map((el: Idata) =>  ({...el, isSaveLocal: false})))
+            
         });
         return () => unsubscribe()
     }, []) 
+    console.log(data);
+    // const getProductsSubcollections = async () => {
+    //     const productsRef = db.collection("products");
+    //     const subcollections = await productsRef.listCollections();
+      
+    //     subcollections.forEach((subcollection) => {
+    //       console.log(subcollection.id);
+    //     });
+    // };
+      
+    // getProductsSubcollections();
 
     return (
         <section className="headphones">
@@ -29,7 +40,7 @@ const Headphones: React.FC = () => {
                     data.map((el, indx) => (
                         <div key={indx} className="headphones__card">
                             <div className="headphones__card-top">
-                                <Button/>
+                                <Button el={el} indx={indx}/>
                                 <div  className="headphones__card-img"><img src={el.img} alt="" /></div>
                             </div>
                             <Info el={el}/>
