@@ -3,7 +3,8 @@ import ImageContainer from "../../components/Product/ImageContainer";
 import PriceTag from "../../components/Product/PriceTag";
 import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
-import {  Collapse, Divider  } from "antd";
+import Collapse from "../../components/Product/Collapse";
+// import {  Collapse, Divider  } from "antd";
 
 export default function ProductPage() {
   const images = [
@@ -15,11 +16,11 @@ export default function ProductPage() {
   ];
 
   return (
-    <section className="container mx-auto mt-4">
+    <section className="container mx-auto mt-4 max-w-[1110px]">
       <h1 className="mb-5 text-xl font-semibold text-dark-100">
         Автодержатель
       </h1>
-      <div className="bg-white rounded-[30px] p-8">
+      <div className="bg-white rounded-[30px] p-8 shadow-[0_0_20px_0_rgba(0,0,0,0.1)]">
         <div className="flex items-start justify-between">
           <HeartIcon className="h-8 text-dark-200" />
           <img src="/images/brand-1.png" alt="brand" />
@@ -32,19 +33,9 @@ export default function ProductPage() {
           <PriceTag newPrice={2000} oldPrice={3000} discount={20} />
         </div>
       </div>
-      <div className="relative grid items-start grid-cols-4 gap-5">
+      <div className="relative grid items-start grid-cols-4 gap-5 mt-6">
         <div className="col-span-3 ">
-          <Collapse
-            items={[
-              {
-                key: "1",
-                label: "This is large size panel header",
-                children: <p>{"text"}</p>,
-              },
-            ]}
-            defaultActiveKey={['1']}
-            expandIconPosition={"end"}
-          />
+         <Collapse>hello world</Collapse>
         </div>
         <div className="sticky top-0">
           <Button classes="mb-4">Купить!</Button>
