@@ -16,6 +16,8 @@ export type ButtonProps={
   children: React.ReactNode;
   classes?:string;
   type?:"button" | "submit" | "reset" | undefined;
+  bgColor?:string;
+  isLink?:boolean;
 }
 
 export type CommentProps = {

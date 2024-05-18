@@ -30,7 +30,7 @@ function CommentTextArea({ setComments }: CommentTextAreaProps) {
     e.preventDefault();
     setComments((currentComments) => [
       ...(currentComments ?? []),
-      { username: "Adelya", comment: text },
+      { username: "Аделя", comment: text },
     ]);
     setText("");
   };
@@ -48,7 +48,7 @@ function CommentTextArea({ setComments }: CommentTextAreaProps) {
         ></textarea>
         <PencilIcon className="h-5 ml-3 stroke-2 text-dark-30" />
       </div>
-      <Button type="submit" classes="mb-4 md:w-[200px] w-full">Отправить</Button>
+      <Button type="submit" classes="mb-4 md:w-[200px] w-full p-3">Отправить</Button>
     </form>
   );
 }

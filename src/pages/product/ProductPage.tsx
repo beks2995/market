@@ -25,7 +25,7 @@ export default function ProductPage() {
         discount={20}
         category="Автодержатель"
       />
-      <div className="relative grid items-start grid-cols-4 gap-5 mt-6">
+      <div className="relative grid items-start grid-cols-1 gap-5 mt-6 lg:grid-cols-4">
         <div className="col-span-3 space-y-12">
           <Collapse title="Описание и характеристики" isOpen={true}>
             Активное шумоподавление: Нет <br />
@@ -35,13 +35,16 @@ export default function ProductPage() {
             Комплектация: Наушники <br />
             Материал корпуса: Пластик, резина <br />
             Микрофон: Да <br />
-            Назначение: Проводные наушники<br />
+            Назначение: Проводные наушники
+            <br />
             Ответить/закончить разговор: Да <br />
-            Разъем наушников: Lightning<br />
+            Разъем наушников: Lightning
+            <br />
             Регулятор громкости: Да <br />
             Тип крепления: Без крепления <br />
             Тип наушников: Вкладыши ("таблетки") <br />
-            Тип подключения: Проводное<br /> 
+            Тип подключения: Проводное
+            <br />
             Частотный диапазон: 20 Гц - 20000 Гц <br />
             Чувствительность: 109 дБ
           </Collapse>
@@ -49,11 +52,12 @@ export default function ProductPage() {
             <CommentSection />
           </Collapse>
         </div>
-        <div className="sticky top-2">
-          <Button classes="mb-4 w-full">Купить!</Button>
-          <Button classes="w-full">
-            <ShoppingCartIcon className="h-6 mr-3 " />
-            Добавить в корзину
+        <div className="sticky flex flex-row items-stretch gap-4 top-2 lg:flex-col">
+          <Button classes="lg:hidden bg-[#43D854] p-4"><img className="w-10 h-auto" src="/images/whatsapp-icon.png" alt="whatsapp icon" /></Button>
+          <Button classes=" w-full grow lg:p-3 p-5">Купить!</Button>
+          <Button classes="lg:w-full lg:p-3 p-5">
+            <ShoppingCartIcon className="h-6 lg:mr-3 " />
+            <span className="hidden lg:inline">Добавить в корзину</span>
           </Button>
         </div>
       </div>
