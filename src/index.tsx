@@ -1,9 +1,11 @@
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App"; // Importing the App component
+import "./App.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-    <App />
+ReactDOM.render(
+  <div>
+    <App /> {/* Rendering the App component */}
+  </div>,
+  document.getElementById("root") // Make sure there's a corresponding div with id="root" in your HTML
 );
