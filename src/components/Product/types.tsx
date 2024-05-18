@@ -8,9 +8,16 @@ export type PriceTagProps = {
 
 export type CollapseProps={
   children:React.ReactNode;
+  title:string;
+  isOpen?:boolean;
 }
 
 export type ButtonProps={
   children: React.ReactNode;
   classes?:string;
 }
+
+export type CommentProps = {
+  username: string;
+  comment: string;
+};
