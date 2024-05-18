@@ -18,8 +18,8 @@ const Contacts = () => {
               </Map>
             </div>
           </YMaps>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src="/imgs/address.svg" alt="" />
+          <div style={{ display: 'flex', alignItems: 'center', gap:'11px'}}>
+        <img src="/imgs/address.png" alt="" />
         <div  >
             <p className='contacts_address'>Аксай-3а, 62ф, Алматы, Казахстан</p>
             <p className='address_floor'>3 этаж 35 кабинет</p>
