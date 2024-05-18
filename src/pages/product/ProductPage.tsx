@@ -15,7 +15,7 @@ export default function ProductPage() {
   ];
 
   return (
-    <section className="container mx-auto mt-5 max-w-[1110px]">
+    <section className="container mx-auto p-5 lg:p-0 max-w-[1110px] bg-blue-200">
       <ProductInfoCard
         name="BOROFONE BH32"
         brand="/images/brand-1.png"

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
-import { Comment } from "./types";
+import { CommentTextAreaProps } from "./types";
 
-type CommentTextAreaProps = {
-  setComments: React.Dispatch<React.SetStateAction<Comment[] | null>>;
-};
+
 
 function CommentTextArea({ setComments }: CommentTextAreaProps) {
   const [text, setText] = useState<string>("");

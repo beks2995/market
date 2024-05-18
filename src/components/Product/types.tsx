@@ -29,3 +29,7 @@ export type Comment = {
   username: string;
   comment: string;
 };
+
+export type CommentTextAreaProps = {
+  setComments: React.Dispatch<React.SetStateAction<Comment[] | null>>;
+};
