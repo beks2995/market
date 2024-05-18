@@ -1,0 +1,25 @@
+.top{
+    display: flex;
+    border-radius: 30px;
+    /* width: 1110px; */
+    height: 197px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #101010;
+    margin: 22px 165px 37px 165px;
+}
+.top__text{
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+}
+.top__text-title{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+.top__text-h1{
+    font-weight: 600;
+    font-size: 30px;
+}
