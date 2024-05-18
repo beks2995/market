@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Button from "../../components/Product/Button";
+import { Comment } from "./types";
 
-function CommentTextArea() {
+type CommentTextAreaProps = {
+  setComments: React.Dispatch<React.SetStateAction<Comment[] | null>>;
+};
+
+function CommentTextArea({ setComments }: CommentTextAreaProps) {
   const [text, setText] = useState<string>("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -21,9 +26,18 @@ function CommentTextArea() {
     adjustTextareaHeight();
   }, [text]);
 
+  const addNewCommentHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setComments((currentComments) => [
+      ...(currentComments ?? []),
+      { username: "Adelya", comment: text },
+    ]);
+    setText("");
+  };
+
   return (
-    <div className="flex items-start gap-7">
-      <div className="flex p-4 rounded-2xl bg-light-300 grow">
+    <form className="flex flex-col items-start md:flex-row gap-7" onSubmit={addNewCommentHandler}>
+      <div className="flex w-full p-4 bg-light-300 rounded-2xl grow">
         <textarea
           ref={textareaRef}
           placeholder="Отзыв тут"
@@ -34,8 +48,8 @@ function CommentTextArea() {
         ></textarea>
         <PencilIcon className="h-5 ml-3 stroke-2 text-dark-30" />
       </div>
-      <Button classes="mb-4 w-[200px]">Купить!</Button>
-    </div>
+      <Button type="submit" classes="mb-4 md:w-[200px] w-full">Отправить</Button>
+    </form>
   );
 }
 

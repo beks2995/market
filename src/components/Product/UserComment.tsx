@@ -2,7 +2,7 @@ import React from "react";
 import { CommentProps } from "./types";
 
 
-function Comment({ username, comment }: CommentProps) {
+function UserComment({ username, comment }: CommentProps) {
   return (
     <div>
       <p className="mb-4 text-lg font-semibold">{username}</p>
@@ -11,4 +11,4 @@ function Comment({ username, comment }: CommentProps) {
   );
 }
 
-export default Comment;
+export default UserComment;

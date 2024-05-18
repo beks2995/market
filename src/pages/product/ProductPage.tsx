@@ -49,7 +49,7 @@ export default function ProductPage() {
             <CommentSection />
           </Collapse>
         </div>
-        <div className="sticky top-0">
+        <div className="sticky top-2">
           <Button classes="mb-4 w-full">Купить!</Button>
           <Button classes="w-full">
             <ShoppingCartIcon className="h-6 mr-3 " />
