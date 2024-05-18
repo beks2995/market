@@ -16,9 +16,9 @@ const App: React.FC = () => {
       <div>
         <Header /> {/* Adding the Header to the App component */}
         <Routes>
-          <Route path="*" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/about" element={<div>About Page</div>} />
-          <Route path='/' element={<UslovieService />}></Route>
+          <Route path='/uslovie' element={<UslovieService />}></Route>
           <Route path='/Contacts' element={<Contacts />}></Route>
           <Route path="/cart" element={<div>Cart Page</div>} />
           <Route path="/profile" element={<>Profile</>} />

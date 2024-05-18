@@ -19,7 +19,7 @@ interface Idata {
 const Home: React.FC  = () => {
     const [data, setData] = useState<Array<Idata>>([])
     useEffect (() => {
-        const q = query(collection(db, "products/product_id/headphones"));
+        const q = query(collection(db, "products/product_id/Headphones"));
         const unsubscribe = onSnapshot (q, (querySnapshot) => {
             const arr:any = [];
             querySnapshot.forEach((doc) => {

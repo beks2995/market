@@ -1,5 +1,5 @@
 import React from 'react'
-import { YMaps, Map, Placemark, GeolocationControl, ZoomControl } from 'react-yandex-maps'
+import { YMaps, Map, Placemark, GeolocationControl, ZoomControl } from '@pbe/react-yandex-maps'
 
 const Contacts = () => {
   return (
@@ -8,7 +8,7 @@ const Contacts = () => {
       <div className='Contacts_top'>
         <div className='map-box'>
           <h3 className='contacts_title'>Наш офис</h3>
-          <YMaps apiKey='3b0cf7b3-13d7-418b-a62a-3be18ff25c06'>
+          <YMaps>
             <div className='map'>
               <Map  defaultState={{ center: [43.233413, 76.825989], zoom: 18 }} width={722} height={424}>
   
