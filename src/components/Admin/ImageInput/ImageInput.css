@@ -1,0 +1,38 @@
+.image-input-container {
+    position: relative;
+  }
+  
+  #file-upload-button {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+  }
+  
+  .custom-file-upload {
+    background-color: rgb(214, 214, 214);
+    padding: 10px 20px;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+    width: 100%;
+    height: 46px;
+    margin-top: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #ddd;
+  }
+  

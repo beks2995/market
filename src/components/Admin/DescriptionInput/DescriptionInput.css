@@ -1,0 +1,16 @@
+.description {
+    width: 957px;
+    height: 163px;
+    border-radius: 15px;
+    background: rgb(214, 214, 214);
+    margin-top: 46px;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+    resize: none; 
+    padding: 10px; 
+    box-sizing: border-box; 
+}

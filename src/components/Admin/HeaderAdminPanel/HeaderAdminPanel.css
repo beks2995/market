@@ -1,0 +1,85 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.container__admin{
+    width: 1155px;
+}
+.header__container{
+    display: flex;
+    justify-content: space-between  ;
+}
+.header__admin-panel{
+    display: flex;
+    justify-content: space-around;
+}
+.header__admin-title {
+    color: rgb(16, 16, 16);
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.iconPositionDiv {
+    padding: 20px;
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    background-color: #444;
+    border-radius: 0 0 30px 30px;
+    padding: 15px 15px 19px 16px;
+    display: flex;
+    flex-direction: column;
+    right: 14.9%;
+    top: 7%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #eaeaea;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 9px;
+}
+
+.profile-dropdown-btn-1 {
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.profile-dropdown-btn-2 {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    background: none;
+    border: none;
+}
+
+.profile-dropdown-btn-1 a,
+.profile-dropdown-btn-2 a{
+    text-decoration: none;
+}
+
+.profile-dropdown-btn-1 a{
+    color: #101010;
+}
+
+.profile-dropdown-btn-2 a{
+    color: #ffa542;
+}
+
+.profile-dropdown-btn-3{
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.profile-dropdown-btn-3:hover{
+    cursor: pointer;
+}
+        
