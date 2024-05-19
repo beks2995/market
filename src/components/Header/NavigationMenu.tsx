@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, FC } from 'react';
 import ArrowIcon from './ArrowIcon';
 import './NavigationMenu.css'
+import styles from './NavigationMenu.module.css';
 
-const NavigationMenu: React.FC = () => {
+const NavigationMenu: FC = () => {
   const [itemOpenState, setItemOpenState] = useState<{ [key: string]: boolean }>({});
 
   const handleToggle = (item: string) => {
@@ -14,7 +14,7 @@ const NavigationMenu: React.FC = () => {
   };
 
   return (
-    <ul className={'navList'} >
+    <ul className={styles.navList} >
       <li onClick={() => handleToggle('Apple')}>
         Apple <ArrowIcon isOpen={itemOpenState['Apple']} />
       </li>

@@ -1,7 +1,7 @@
 import React from "react";
-import './Homepage.css'
-import Top from "./sections/top";
-import Headphones from "../../components/headphones";
+import './Home.css'
+import Top from "./sections/Top";
+import Headphones from "../../components/Headphones";
 
 const Home: React.FC  = () => {
 

@@ -3,7 +3,7 @@ import { Idata } from "../../pages/home/interfaces";
 import { db } from "../../firebase/firestore"; 
 import { collection, query, onSnapshot } from "firebase/firestore";
 import './Card.css'
-import Info from "./info";
+import Info from './Info'
 
 
 const Headphones: React.FC = () => {
