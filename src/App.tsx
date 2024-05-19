@@ -1,5 +1,5 @@
 
-import React from 'react';
+import {FC, useState} from 'react';
 import Header from './components/Header/Header'; // Importing the Header component
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login'
@@ -10,14 +10,15 @@ import UslovieService from './pages/UslovieService/UslovieService'
 import Contacts from './pages/Contacts/Contacts'
 import Footer from './components/Footer/Footer'
 
-const App: React.FC = () => {
+const App: FC = () => {
+  const [favoritedCount, setFavoritedCount] = useState(0);
   return (
     <Router>
       <div className='App'>
-        <Header /> {/* Adding the Header to the App component */}
+        <Header  favoritedCount={favoritedCount}/> {/* Adding the Header to the App component */}
         <main className='Content'>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home setFavoritedCount={setFavoritedCount}/>} />
           <Route path="/about" element={<div>About Page</div>} />
           <Route path='/uslovie' element={<UslovieService />}></Route>
           <Route path='/contacts' element={<Contacts />}></Route>

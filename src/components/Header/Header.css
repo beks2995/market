@@ -112,19 +112,19 @@
 }
 
 .profile-dropdown-btn-1 a,
-.profile-dropdown-btn-2 a{
+.profile-dropdown-btn-2 a {
     text-decoration: none;
 }
 
-.profile-dropdown-btn-1 a{
+.profile-dropdown-btn-1 a {
     color: #101010;
 }
 
-.profile-dropdown-btn-2 a{
+.profile-dropdown-btn-2 a {
     color: #ffa542;
 }
 
-.profile-dropdown-btn-3{
+.profile-dropdown-btn-3 {
     background: none;
     border: none;
     font-family: var(--font-family);
@@ -133,7 +133,7 @@
     color: #101010;
 }
 
-.profile-dropdown-btn-3:hover{
+.profile-dropdown-btn-3:hover {
     cursor: pointer;
 }
 
@@ -165,11 +165,19 @@
     position: absolute;
     top: 12%;
     right: 16%;
-    background-color: orange;
-    color: white;
     border-radius: 50%;
     width: 18px;
     height: 18px;
-    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9.21416' cy='8.7' r='8.7' fill='%23FFA542' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.badge>p {
+    transform: translateY(-8%);
+    font-family: var(--font-family);
+    font-weight: 500;
     font-size: 15px;
+    text-align: center;
+    color: #fff;
 }
