@@ -1,57 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import NavigationMenu from './NavigationMenu';
 import { useNavigate } from 'react-router-dom';
 import { firebase } from '../../firebase/firebase';
 import styles from './Header.module.css';
+import { useWindowSize } from 'react-use'; // Assuming you use a library for window size
 
-interface HeaderProps{
-    favoritedCount:number;
+interface HeaderProps {
+    favoritedCount: number;
 }
 
-const Header: React.FC<HeaderProps> = ({favoritedCount}) => {
+const Header: React.FC<HeaderProps> = ({ favoritedCount }) => {
+    const location = useLocation();
+    const { width } = useWindowSize(); // Get window width
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 429);
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [navOpen, setNavOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [cartCount, setCartCount] = useState(0)
-    // const [wishlistCount, setWishlistCount] = useState(0)
 
-    // useEffect(() => {
-    //     // Add Firebase auth state change listener
-    //     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-    //         setIsLoggedIn(!!user); // Update logged-in state based on user object
-    //     });
+    useEffect(() => {
+        const handleResize = () => {
+          setIsMobile(window.innerWidth < 429);
+          console.log('isMobile:', isMobile)
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup function to remove event listener
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
 
-    //     // Cleanup function
-    //     return () => {
-    //         unsubscribe(); // Unsubscribe from auth state changes when component unmounts
-    //     };
-    // }, []);
-    // useEffect(() => {
-    //     // Add Firebase auth state change listener
-    //     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-    //         setIsLoggedIn(!!user); // Update logged-in state based on user object
-    //     });
+        
+      }, []); // Empty dependency array ensures this effect runs only once after initial mount
 
-    //     // Fetch cart and wishlist counts from the database
-    //     const fetchCounts = async () => {
-    //         // Replace the below logic with your data fetching logic
-    //         const cartSnapshot = await firebase.firestore().collection('headphones').get();
-    //         const wishlistSnapshot = await firebase.firestore().collection('wishlist').get();
 
-    //         setCartCount(cartSnapshot.size);
-    //         setWishlistCount(wishlistSnapshot.size);
-    //     };
-
-    //     fetchCounts();
-
-    //     // Cleanup function
-    //     return () => {
-    //         unsubscribe(); // Unsubscribe from auth state changes when component unmounts
-    //     };
-    // }, []);
+    const handleBack = () => {
+        window.history.back(); // Go back in history
+    };
 
     const handleSignOut = async () => {
         try {
@@ -68,7 +57,13 @@ const Header: React.FC<HeaderProps> = ({favoritedCount}) => {
     return (
         <header className={styles.header}>
             <div className={styles.logoAndNav}>
-                <div className={styles.logo}><Link to="/" className='logoLink'>QPICK</Link></div>
+                {isMobile && location.pathname !== '/' && (
+                    <button className={styles.backButton} onClick={handleBack}><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.99949 9L11 16.0003L9.00026 18L0 9L9.00026 0L11 1.99969L3.99949 9Z" fill="#101010" />
+                    </svg> Back</button>
+                )}
+                {!isMobile && <div className={styles.logo}><Link to='/' className='logoLink'>QPICK</Link></div>}
+                {/* Other header content */}
                 <nav>
                     <button
                         onClick={() => setNavOpen(!navOpen)}
@@ -78,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({favoritedCount}) => {
                             <path d="M2.14286 2.1V18.9H12.8571V2.1H2.14286ZM1.07143 0H13.9286C14.2127 0 14.4853 0.110625 14.6862 0.307538C14.8871 0.504451 15 0.771523 15 1.05V19.95C15 20.2285 14.8871 20.4955 14.6862 20.6925C14.4853 20.8894 14.2127 21 13.9286 21H1.07143C0.787268 21 0.514746 20.8894 0.313814 20.6925C0.112883 20.4955 0 20.2285 0 19.95V1.05C0 0.771523 0.112883 0.504451 0.313814 0.307538C0.514746 0.110625 0.787268 0 1.07143 0ZM7.5 15.75C7.78416 15.75 8.05668 15.8606 8.25761 16.0575C8.45855 16.2545 8.57143 16.5215 8.57143 16.8C8.57143 17.0785 8.45855 17.3455 8.25761 17.5425C8.05668 17.7394 7.78416 17.85 7.5 17.85C7.21584 17.85 6.94332 17.7394 6.74239 17.5425C6.54145 17.3455 6.42857 17.0785 6.42857 16.8C6.42857 16.5215 6.54145 16.2545 6.74239 16.0575C6.94332 15.8606 7.21584 15.75 7.5 15.75V15.75Z" fill="#838383" />
                         </svg>
                         Выбрать модель телефона
-                        {navOpen === true ? 
+                        {navOpen === true ?
 
                             <svg width="8" height="5" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 4.37114e-07L10 5.25031L8.33255 7L5 3.49938L1.66745 7L-1.52963e-07 5.25031L5 4.37114e-07Z" fill="#1C1C27" /></svg>
                             :
@@ -94,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({favoritedCount}) => {
                 <div className='iconPositionDiv'>
                     <Link to="/wishlist"
                         className="wishlist"
-                        
+
 
                     ><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0009 1.65429C13.5848 -0.627558 17.5777 -0.551821 20.0669 1.90098C22.5551 4.35486 22.6409 8.2629 20.3265 10.812L10.9987 20L1.67308 10.812C-0.641281 8.2629 -0.554383 4.34837 1.93267 1.90098C4.42412 -0.548575 8.40935 -0.630804 11.0009 1.65429ZM18.5094 3.42979C16.8594 1.80469 14.1974 1.73869 12.4705 3.26425L11.002 4.56044L9.53243 3.26533C7.79996 1.73761 5.14351 1.80469 3.48914 3.43195C1.85017 5.04407 1.76767 7.62455 3.27795 9.32971L10.9998 16.937L18.7217 9.3308C20.233 7.62455 20.1505 5.04732 18.5094 3.42979Z" fill="#838383" /></svg>
                         {/* Heart icon */}
@@ -124,17 +119,17 @@ const Header: React.FC<HeaderProps> = ({favoritedCount}) => {
                 </div>
 
                 {profileOpen && isLoggedIn && (
-                        <div className="profile-dropdown">
-                            <button className='profile-dropdown-btn-3' onClick={handleSignOut}>Выход</button>
-                        </div>
-                    )}
-                    {profileOpen && !isLoggedIn && (
-                        <div className="profile-dropdown">
-                            <button className='profile-dropdown-btn-1'><Link to="/login">Войти</Link></button>
-                            <button className='profile-dropdown-btn-2'><Link to="/register">Регистрация</Link></button>
-                        </div>
-                    )}
-            
+                    <div className="profile-dropdown">
+                        <button className='profile-dropdown-btn-3' onClick={handleSignOut}>Выход</button>
+                    </div>
+                )}
+                {profileOpen && !isLoggedIn && (
+                    <div className="profile-dropdown">
+                        <button className='profile-dropdown-btn-1'><Link to="/login">Войти</Link></button>
+                        <button className='profile-dropdown-btn-2'><Link to="/register">Регистрация</Link></button>
+                    </div>
+                )}
+
             </div>
         </header>
     );

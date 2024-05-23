@@ -37,7 +37,7 @@
     display: flex;
     margin-top: 9px;
     gap: 8px;
-    align-items: end;
+    align-items: start;
 }
 .card__estimation-text{
     font-weight: 600;

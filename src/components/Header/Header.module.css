@@ -181,3 +181,11 @@
     text-align: center;
     color: #fff;
 }
+.backButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 3px 9px 10px;
+    width: 240px;
+    color: #101010;
+}
