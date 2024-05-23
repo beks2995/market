@@ -1,38 +1,40 @@
-import React, { useState, useEffect, SetStateAction, MouseEvent } from "react";
+import { FC, MouseEvent } from "react";
 import { Idata } from "../../pages/home/interfaces";
-import { db } from "../../firebase/firestore"; 
-import { collection, query, onSnapshot } from "firebase/firestore";
 import './Card.css'
-import Info from "./info";
+import Info from "../Card/info";
+interface IProps {
+    data : Idata[];
+    clickHandle(el: Idata): void
+}
 
 
-const Headphones: React.FC = () => {
-    const [data, setData] = useState<Array<Idata>>([])
-    const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
-    useEffect (() => {
-        const q = query(collection(db, "products/product_id/Headphones"));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const arr:any = [];
-            querySnapshot.forEach((doc) => {
-                arr.push(doc.data());
-            });
-            setData(arr.map((el: Idata) =>  ({...el, isFavorited: false})))
-            // setData(arr)
-        });
-        return () => unsubscribe()
-    }, []) 
-    console.log(data);
-    const clickHandle = (el: Idata) => {
-        el.isFavorited = !el.isFavorited
-        setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if(el.isFavorited){
-            setInFavorited((prev: Idata[]) => [...prev, el])
-        }
+const Card: FC<IProps> = ({data, clickHandle}) => {
+    // const [data, setData] = useState<Array<Idata>>([])
+    // const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
+    // useEffect (() => {
+    //     const q = query(collection(db, "products/product_id/Headphones"));
+    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    //         const arr:any = [];
+    //         querySnapshot.forEach((doc) => {
+    //             arr.push(doc.data());
+    //         });
+    //         setData(arr.map((el: Idata) =>  ({...el, isFavorited: false})))
+    //         // setData(arr)
+    //     });
+    //     return () => unsubscribe()
+    // }, []) 
+    // console.log(data);
+    // const clickHandle = (el: Idata) => {
+    //     el.isFavorited = !el.isFavorited
+    //     setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
+    //     if(el.isFavorited){
+    //         setInFavorited((prev: Idata[]) => [...prev, el])
+    //     }
         
-    } 
-    useEffect(() => {
-        localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
-    }, [inFavorited])
+    // } 
+    // useEffect(() => {
+    //     localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
+    // }, [inFavorited])
     // const getProductsSubcollections = async () => {
     //     const productsRef = db.collection("products");
     //     const subcollections = await productsRef.listCollections();
@@ -44,8 +46,7 @@ const Headphones: React.FC = () => {
     // getProductsSubcollections();
 
     return (
-        <section className="products">
-            <p className="title">Наушники</p>
+        <div className="products">
             <div className="cards">
                 {
                     data.map((el, indx) => (
@@ -77,7 +78,7 @@ const Headphones: React.FC = () => {
                     ))
                 }
             </div>
-        </section>
+        </div>
     )
 }
-export default Headphones
+export default Card
