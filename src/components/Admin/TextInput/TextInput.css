@@ -1,0 +1,30 @@
+.input-container-large {
+    position: relative;
+    display: inline-block;
+    width: 957px;
+}
+
+.textinput {
+    border-radius: 15px;
+    background: rgb(214, 214, 214);
+    width: 100%;
+    height: 45px;
+    border: none;
+    padding: 14px;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}

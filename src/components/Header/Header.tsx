@@ -5,6 +5,7 @@ import ArrowIcon from './ArrowIcon'; // Importing the reusable SVG component
 import NavigationMenu from './NavigationMenu';
 import { useNavigate } from 'react-router-dom';
 import { firebase } from '../../firebase/firebase';
+import styles from './Header.module.css';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
@@ -39,9 +40,9 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="header">
-            <div className='logoAndNav'>
-                <div className="logo"><Link to="/" className='logoLink'>QPICK</Link></div>
+        <header className={styles.header}>
+            <div className={styles.logoAndNav}>
+                <div className={styles.logo}><Link to="/" className='logoLink'>QPICK</Link></div>
                 <nav>
                     <button
                         onClick={() => setNavOpen(!navOpen)}

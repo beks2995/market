@@ -5,3 +5,31 @@ export type PriceTagProps = {
   oldPrice: number;
   discount: number;
 };
+
+export type CollapseProps={
+  children:React.ReactNode;
+  title:string;
+  isOpen?:boolean;
+}
+
+export type ButtonProps={
+  children: React.ReactNode;
+  classes?:string;
+  type?:"button" | "submit" | "reset" | undefined;
+  bgColor?:string;
+  isLink?:boolean;
+}
+
+export type CommentProps = {
+  username: string;
+  comment: string;
+};
+
+export type Comment = {
+  username: string;
+  comment: string;
+};
+
+export type CommentTextAreaProps = {
+  setComments: React.Dispatch<React.SetStateAction<Comment[] | null>>;
+};

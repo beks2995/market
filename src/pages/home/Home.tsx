@@ -1,10 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import './Homepage.css'
 import Top from "./sections/top";
 import Headphones from "./sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
 
-const Home: React.FC  = () => {
+const Home: FC  = () => {
     return (
         <main className="main">
             <Top/>
