@@ -7,6 +7,7 @@ const Contacts = () => {
 
       <div className='Contacts_top'>
         <div className='map-box'>
+          <div>Hello</div>
           <h3 className='contacts_title'>Наш офис</h3>
           <YMaps>
             <div className='map'>
