@@ -1,11 +1,11 @@
-import Headphones from "../../../components/headphones"
+    import Card from "../../../components/Card"
 
-const products = () => {
-    return(
-        <div>
-            <Headphones/>
-        </div>
-    )
-}
+    const products = () => {
+        return(
+            <div>
+                <Card/>
+            </div>  
+        )
+    }
 
-export default products
+    export default products

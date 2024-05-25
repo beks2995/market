@@ -3,8 +3,8 @@ import { Idata } from "../../pages/home/interfaces";
 import './Card.css'
 import Info from "../Card/info";
 interface IProps {
-    data : Idata[];
-    clickHandle(el: Idata): void
+    data? : Idata[];
+    clickHandle?: (el: Idata) => void
 }
 
 
@@ -49,10 +49,10 @@ const Card: FC<IProps> = ({data, clickHandle}) => {
         <div className="products">
             <div className="cards">
                 {
-                    data.map((el, indx) => (
+                    data && data.map((el, indx) => (
                         <div key={indx} className="card">
                             <div className="card__top">
-                                <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle(el)}>
+                                <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle && clickHandle(el)}>
                                     {
                                         el.isFavorited
                                         ?
