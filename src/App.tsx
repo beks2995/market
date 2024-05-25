@@ -12,7 +12,7 @@ import AdminPanel from './pages/adminPanel/adminPanel'
 
 const App: React.FC = () => {
   const location = useLocation()
-  const isAdminRoute = location.pathname.startsWith('/admin')
+  const isAdminRoute = location.pathname.startsWith('/Admin')
 
   return (
     <div>

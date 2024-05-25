@@ -31,7 +31,7 @@ const categories = [
   'Headphones', 'Wireless-Headphones', 'Apple', 'Asus', 'Blackview', 'Cat', 'HMD', 'Honor', 'HTC', 'HUAWEI',
   'Infinix', 'INOI', 'Itel', 'Lenovo', 'LG', 'Meizu', 'Nokia', 'Nubia','OnePlus', 'Oppo', 'Realme', 'Samsung', 'Sony', 'Tecno', 'Ulefone',
   'Vivo', 'Vsmart', 'XIAOMI', 'ZTE'
-]
+] 
 
 const AddDataForm: React.FC = () => {
   const [device, setDevice] = useState<Device>({

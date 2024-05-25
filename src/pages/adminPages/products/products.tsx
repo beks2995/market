@@ -1,9 +1,12 @@
-    import Card from "../../../components/Card"
+
+import Headphones from "../../home/sections/Headphones"
+import WirelessHP from "../../home/sections/WirelessHeadphones"
 
     const products = () => {
         return(
             <div>
-                <Card/>
+                <Headphones/>
+                <WirelessHP/>
             </div>  
         )
     }
