@@ -74,7 +74,7 @@
 
 .icons {
     display: flex;
-
+    align-items: center;
 }
 
 .profile-dropdown {
@@ -181,11 +181,92 @@
     text-align: center;
     color: #fff;
 }
-.backButton{
+
+.backButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 9px 3px 9px 10px;
-    width: 240px;
+    gap: 20px;
+    color: #101010;
+}
+
+.burger_menu {
+    padding-right: 20px;
+}
+
+.menu {
+    position: fixed;
+    /* Position the menu relative to the viewport */
+    top: 4%;
+    /* Adjust the top position as needed */
+    right: 20%;
+    /* Position the menu to the top right corner */
+    z-index: 999;
+    /* Ensure the menu appears above other content */
+    padding: 15px 20px 16px 23px;
+    /* Optional: Add padding for content */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #eaeaea;
+    list-style: none;
+    display: block;
+    /* Hide the menu by default */
+    border-radius: 0 0 0 20px;
+}
+
+.menu li {
+    margin-bottom: 18px;
+}
+
+.menu_ul_wishlist>a {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+    gap: 10px;
+}
+
+.menu_ul_profile>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_contacts>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu_ul_lang p {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_terms>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
     color: #101010;
 }

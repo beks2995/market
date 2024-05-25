@@ -1,11 +1,21 @@
-.navList {
+/* .navList {
     position: absolute;
     border-radius: 0 0 30px 30px;
     padding: 19px 78px 29px 27px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     background: #eaeaea;
     list-style: none;
-}
+} */
+.navList {
+    position: absolute;
+    z-index: 999999; /* Ensure the menu appears above other content */
+    border-radius: 0 0 30px 30px;
+    padding: 19px 78px 29px 27px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #eaeaea;
+    list-style: none;
+  }
+  
 
 .navList li {
     font-family: var(--font-family);
@@ -17,8 +27,6 @@
     justify-content: space-between;
     gap: 68px;
 }
-
-.navList li 
 
 .navList li:hover {
     cursor: pointer;
