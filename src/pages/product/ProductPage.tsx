@@ -9,6 +9,7 @@ import useGetItemDoc from "../../hooks/useGetItemDoc";
 import { useParams } from "react-router-dom";
 import { Item, Review } from "../../types/types";
 import useGetReviews from "../../hooks/useGetReviews";
+import useAuth from "../../hooks/useAuth";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -18,6 +19,8 @@ export default function ProductPage() {
   ) as [Item | null, boolean, boolean, boolean];
 
   const [reviews, reviewsLoading, reviewsError] = useGetReviews(id ?? "") as [Review[], boolean, boolean];
+  const user = useAuth();
+  
 
   return (
     <section className="container mx-auto p-5 lg:p-0 max-w-[1110px] ">
@@ -44,7 +47,7 @@ export default function ProductPage() {
                 </Collapse>
               )}
               <Collapse title="Отзывы покупателей" isOpen={true}>
-                <CommentSection reviews={reviews}/>
+                <CommentSection reviews={reviews} user={user}/>
               </Collapse>
             </div>
             <div className="static flex flex-row-reverse items-stretch w-full gap-4 lg:sticky top-2 lg:flex-col">

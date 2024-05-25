@@ -1,3 +1,5 @@
+import { firebase } from '../firebase/firebase'; 
+
 export type Item = {
   id: string;
   name: string;
@@ -15,9 +17,10 @@ export type Category = {
 };
 
 export type Review = {
-  id: string;
+  id?: string;
   comment: string;
-  createdAt: any; // Firebase Timestamp
   rating: number;
   username: string;
 };
+
+export type User = firebase.User | null;
