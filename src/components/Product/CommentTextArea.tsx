@@ -35,7 +35,7 @@ function CommentTextArea({ setComments }: CommentTextAreaProps) {
 
   return (
     <form className="flex flex-col items-start md:flex-row gap-7" onSubmit={addNewCommentHandler}>
-      <div className="flex w-full p-4 bg-light-300 rounded-2xl grow">
+      <div className="flex w-full p-4 md:w-auto md:grow bg-light-300 rounded-2xl">
         <textarea
           ref={textareaRef}
           placeholder="Отзыв тут"

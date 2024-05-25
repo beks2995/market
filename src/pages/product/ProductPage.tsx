@@ -4,63 +4,66 @@ import Button from "../../components/Product/Button";
 import Collapse from "../../components/Product/Collapse";
 import ProductInfoCard from "../../components/Product/ProductInfoCard";
 import CommentSection from "../../components/Product/CommentSection";
+import { db } from "../../firebase/firestore";
+import useGetItemDoc from "../../hooks/useGetItemDoc";
+import { useParams } from "react-router-dom";
+import { Item, Review } from "../../types/types";
+import useGetReviews from "../../hooks/useGetReviews";
 
 export default function ProductPage() {
-  const images = [
-    "/images/product-1-img-1.png",
-    "/images/product-1-img-2.png",
-    "/images/product-1-img-3.png",
-    "/images/product-1-img-4.png",
-    "/images/product-1-img-5.png",
-  ];
+  const { id } = useParams();
+  const [documentData, isLoading, isNotFound, isError] = useGetItemDoc(
+    "items",
+    id ?? ""
+  ) as [Item | null, boolean, boolean, boolean];
+
+  const [reviews, reviewsLoading, reviewsError] = useGetReviews(id ?? "") as [Review[], boolean, boolean];
 
   return (
     <section className="container mx-auto p-5 lg:p-0 max-w-[1110px] ">
-      <ProductInfoCard
-        name="BOROFONE BH32"
-        brand="/images/brand-1.png"
-        images={images}
-        newPrice={2400}
-        oldPrice={3000}
-        discount={20}
-        category="Автодержатель"
-      />
-      <div className="relative grid items-start grid-cols-1 gap-5 mt-6 lg:grid-cols-4">
-        <div className="col-span-3 space-y-12">
-          <Collapse title="Описание и характеристики" isOpen={true}>
-            Активное шумоподавление: Нет <br />
-            Вес: 10 гр <br />
-            Влагозащита: Нет <br />
-            Длина кабеля: 1.2 м <br />
-            Комплектация: Наушники <br />
-            Материал корпуса: Пластик, резина <br />
-            Микрофон: Да <br />
-            Назначение: Проводные наушники
-            <br />
-            Ответить/закончить разговор: Да <br />
-            Разъем наушников: Lightning
-            <br />
-            Регулятор громкости: Да <br />
-            Тип крепления: Без крепления <br />
-            Тип наушников: Вкладыши ("таблетки") <br />
-            Тип подключения: Проводное
-            <br />
-            Частотный диапазон: 20 Гц - 20000 Гц <br />
-            Чувствительность: 109 дБ
-          </Collapse>
-          <Collapse title="Отзывы покупателей" isOpen={true}>
-            <CommentSection />
-          </Collapse>
-        </div>
-        <div className="sticky flex flex-row items-stretch gap-4 top-2 lg:flex-col">
-          <Button classes="lg:hidden bg-[#43D854] p-4"><img className="w-10 h-auto" src="/images/whatsapp-icon.png" alt="whatsapp icon" /></Button>
-          <Button classes=" w-full grow lg:p-3 p-5">Купить!</Button>
-          <Button classes="lg:w-full lg:p-3 p-5">
-            <ShoppingCartIcon className="h-6 lg:mr-3 " />
-            <span className="hidden lg:inline">Добавить в корзину</span>
-          </Button>
-        </div>
-      </div>
+      {isLoading && <div>loading...</div>}
+      {isNotFound && <div>item is not found</div>}
+      {isError && <div>error occured while getting data from firebase</div>}
+
+      {!isLoading && !isNotFound && !isError && (
+        <>
+          <ProductInfoCard
+            name={documentData?.name??""}
+            brand="/images/brand-1.png"
+            images={documentData?.images ?? []}
+            newPrice={documentData?.priceWithDiscount ?? 0}
+            oldPrice={documentData?.price?? 0}
+            discount={20}
+            category={documentData?.categoryName ?? ""}
+          />
+          <div className="relative grid items-start grid-cols-1 mt-6 lg:gap-y-0 gap-y-5 lg:grid-cols-4 lg:gap-x-5 gap-x-0">
+            <div className="col-span-3 space-y-12">
+              {documentData?.description && (
+                <Collapse title="Описание и характеристики" isOpen={true}>
+                  <div dangerouslySetInnerHTML={{ __html: documentData?.description.replace(/\\n/g, '<br>')??""}} />
+                </Collapse>
+              )}
+              <Collapse title="Отзывы покупателей" isOpen={true}>
+                <CommentSection reviews={reviews}/>
+              </Collapse>
+            </div>
+            <div className="static flex flex-row-reverse items-stretch w-full gap-4 lg:sticky top-2 lg:flex-col">
+              <Button classes="lg:hidden bg-[#43d854] p-4">
+                <img
+                  className="w-10 h-auto"
+                  src="/images/whatsapp-icon.png"
+                  alt="whatsapp icon"
+                />
+              </Button>
+              <Button classes=" w-full grow lg:p-3 p-5">Купить!</Button>
+              <Button classes="lg:w-full lg:p-3 p-5">
+                <ShoppingCartIcon className="h-6 mr-0 lg:mr-3" />
+                <span className="hidden lg:inline">Добавить в корзину</span>
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -2,31 +2,20 @@ import UserComment from "./UserComment";
 import CommentTextArea from "./CommentTextArea";
 import { useEffect, useState } from "react";
 import {Comment} from "./types"
+import {Review} from "../../types/types"
 
+type CommentSectionProps = {
+  reviews: Review[];
+};
 
-function CommentSection() {
+function CommentSection({reviews}:CommentSectionProps) {
   const [comments, setComments] = useState<Comment[] | null>(null);
-
-  useEffect(() => {
-    setComments([
-      {
-        username: "Бекназар",
-        comment:
-          "Спасибо большое! Держатель супер! Легко установил красивый дизайн.Самое главное, что заряжает мой телефон",
-      },
-      {
-        username: "Буран",
-        comment:
-          "Коробка была немного повреждена но держатель не пострадал. Очень хороший держатель для тех кто часто снимает телефон. Покупаю второй для работы. ",
-      },
-    ]);
-  }, []);
 
   return (
     <div>
       <div className="mb-20 space-y-6">
-        {comments?.map((c) => (
-          <UserComment username={c.username} comment={c.comment} />
+        {reviews?.map((c) => (
+          <UserComment key={c.id} username={c.username} comment={c.comment} />
         ))}
       </div>
       <CommentTextArea setComments={setComments}/>
