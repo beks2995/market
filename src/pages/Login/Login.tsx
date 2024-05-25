@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import { firebase } from '../firebase/firebase'; // Import Firebase module
+import { firebase } from '../../firebase/firebase'; // Import Firebase module
 
 const Login: React.FC = () => {
   const navigate = useNavigate();

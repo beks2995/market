@@ -1,16 +1,22 @@
-import { FC } from "react";
-import './Homepage.css'
+// Home.tsx
+import {FC} from "react";
+import './Home.css'
 import Top from "./sections/top";
-import Headphones from "./sections/Headphones";
+import Headphones from "../../pages/home/sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
 
-const Home: FC  = () => {
-    return (
-        <main className="main">
-            <Top/>
-            <Headphones/> 
-            <WirelessHP/>
-        </main>
-    )
+interface HomeProps {
+  setFavoritedCount: React.Dispatch<React.SetStateAction<number>>;
 }
-export default Home
+
+const Home: FC<HomeProps> = ({ setFavoritedCount }) => {
+  return (
+    <main className="main">
+      <Top />
+      <Headphones setFavoritedCount={setFavoritedCount} />
+      <WirelessHP setFavoritedCount={setFavoritedCount}/>
+    </main>
+  );
+}
+
+export default Home;

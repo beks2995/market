@@ -20,6 +20,16 @@ body {
   background-color: var(--color-light);
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Content{
+  flex: 1;
+}
+
 .text-stroke-1 {
   -webkit-text-stroke: 1px;
 }

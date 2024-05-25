@@ -9,4 +9,5 @@ export interface Idata {
     priceAfterDiscount: string;
     priceBeforeDiscount: string;
     isFavorited : boolean
+    id: string;
 }
