@@ -17,7 +17,7 @@ function CommentSection({reviews}:CommentSectionProps) {
   return (
     <div>
       <div className="mb-20 space-y-6">
-        {reviews?.map((c) => (
+        {comments?.map((c) => (
           <UserComment key={c.id} username={c.username} comment={c.comment} rating={c.rating}/>
         ))}
       </div>

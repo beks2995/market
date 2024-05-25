@@ -5,6 +5,7 @@ import { CommentTextAreaProps } from "./types";
 import { db } from "../../firebase/firestore";
 import { addDoc, collection } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import Stars from "./Stars";
 
 function CommentTextArea({ setComments, username }: CommentTextAreaProps) {
   const [text, setText] = useState<string>("");
@@ -58,7 +59,10 @@ function CommentTextArea({ setComments, username }: CommentTextAreaProps) {
         type="number"
         className="w-full bg-blue-200"
         onChange={(e) => setRating(+e.target.value)}
+        value={rating}
+        hidden
       />
+      <Stars setRating={setRating}/>
       <div className="flex w-full p-4 md:w-auto md:grow bg-light-300 rounded-2xl">
         <textarea
           ref={textareaRef}
