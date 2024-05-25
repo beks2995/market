@@ -6,7 +6,7 @@ import Card from "../../../../components/Card";
 import './WirelessHP.css'
 
 interface HeadphonesProps {
-    setFavoritedCount: React.Dispatch<React.SetStateAction<number>>;
+    setFavoritedCount?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const WirelessHP: FC<HeadphonesProps> = ({ setFavoritedCount }) => {
@@ -29,7 +29,7 @@ const WirelessHP: FC<HeadphonesProps> = ({ setFavoritedCount }) => {
         if (el.isFavorited) {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }
-        setFavoritedCount(inFavorited.length + (el.isFavorited ? 1 : -1));
+        setFavoritedCount && setFavoritedCount(inFavorited.length + (el.isFavorited ? 1 : -1));
         // Update favorited count
     }
     useEffect(() => {
