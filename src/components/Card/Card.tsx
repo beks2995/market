@@ -4,7 +4,7 @@ import './Card.css'
 import Info from "../Card/info";
 interface IProps {
     data? : Idata[];
-    clickHandle?: (el: Idata) => void
+    clickHandle?(el: Idata): void
 }
 
 
