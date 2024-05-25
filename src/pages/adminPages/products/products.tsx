@@ -1,7 +1,9 @@
+import Headphones from "../../../components/headphones"
+
 const products = () => {
     return(
         <div>
-            soon
+            <Headphones/>
         </div>
     )
 }
