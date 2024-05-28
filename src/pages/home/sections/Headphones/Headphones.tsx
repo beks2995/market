@@ -25,6 +25,8 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
         });
         return () => unsubscribe()
     }, []) 
+    console.log(headphones);
+    
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
         setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))

@@ -1,7 +1,7 @@
 export interface Idata {
     category: string;
     description: string;
-    estimation: string;
+    defaultRating: string;
     img: string;
     inBasket: boolean;
     inFavorite: boolean;
