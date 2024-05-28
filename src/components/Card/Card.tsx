@@ -5,55 +5,24 @@ import Info from "../Card/info";
 interface IProps {
     data : Idata[];
     clickHandle(el: Idata): void
+    inFavorited: any | Array<Idata> 
 }
 
 
-const Card: FC<IProps> = ({data, clickHandle}) => {
-    // const [data, setData] = useState<Array<Idata>>([])
-    // const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
-    // useEffect (() => {
-    //     const q = query(collection(db, "products/product_id/Headphones"));
-    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    //         const arr:any = [];
-    //         querySnapshot.forEach((doc) => {
-    //             arr.push(doc.data());
-    //         });
-    //         setData(arr.map((el: Idata) =>  ({...el, isFavorited: false})))
-    //         // setData(arr)
-    //     });
-    //     return () => unsubscribe()
-    // }, []) 
-    // console.log(data);
-    // const clickHandle = (el: Idata) => {
-    //     el.isFavorited = !el.isFavorited
-    //     setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-    //     if(el.isFavorited){
-    //         setInFavorited((prev: Idata[]) => [...prev, el])
-    //     }
-        
-    // } 
-    // useEffect(() => {
-    //     localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
-    // }, [inFavorited])
-    // const getProductsSubcollections = async () => {
-    //     const productsRef = db.collection("products");
-    //     const subcollections = await productsRef.listCollections();
-      
-    //     subcollections.forEach((subcollection) => {
-    //       console.log(subcollection.id);
-    //     });
-    // };
-    // getProductsSubcollections();
+const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
 
+    // console.log(inFavorited.length === 0);
+    
     return (
         <div className="products">
             <div className="cards">
                 {
-                    data.map((el, indx) => (
+                    data && data.map((el, indx) => (
                         <div key={indx} className="card">
                             <div className="card__top">
                                 <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle(el)}>
                                     {
+                                        // inFavorited.length > 0 ? inFavorited.find((item: Idata) => item.description === el.description).isFavorited : el.isFavorited
                                         el.isFavorited
                                         ?
                                         <svg width="20" height="19" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">

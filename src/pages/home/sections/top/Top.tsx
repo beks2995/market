@@ -12,8 +12,7 @@ const Top: React.FC = () => {
                     </div>
                     <p className="top__text_sub">Iphone 13 Pro Max</p>
                 </div>
-                {/* <img src="../../../images/iPhone-13-Pro-Max-silver-1000x1000 1.jpg" alt="phone" /> */}
-            </div>`
+            </div>
         </section>
     )
 }

@@ -1,21 +1,27 @@
-import { FC, useState, useEffect, SetStateAction } from "react";
+import { FC, useState, useEffect, SetStateAction, Dispatch } from "react";
 import { Idata } from "../../interfaces";
 import { db } from "../../../../firebase/firestore";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import Card from "../../../../components/Card";
 import './Headphones.css'
+interface Istates {
+    setInFavorited: Dispatch<SetStateAction<Array<Idata>>>
+    inFavorited: SetStateAction<Idata[]>
+}
 
-const Headphones: FC = () => {
+const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
     const [headphones, setHeadphones] = useState<Array<Idata>>([])
-    const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
     useEffect (() => {
-        const q = query(collection(db, "products/product_id/Headphones"));
+        const q = query(collection(db, "items"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const arr:any = [];
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data());
             });
-            setHeadphones(arr.map((el: Idata) =>  ({...el, isFavorited: false})))
+            setHeadphones(arr.filter((el: Idata) =>  el.categoryId === '/categories/Headphones' && {...el, isFavorited: false}))
+
+            
+            
         });
         return () => unsubscribe()
     }, []) 
@@ -27,13 +33,10 @@ const Headphones: FC = () => {
         }
         
     } 
-    useEffect(() => {
-        localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
-    }, [inFavorited])
     return (
         <section className="headphones">
             <p className="title">Наушники</p>
-            <Card data={headphones} clickHandle={clickHandle}/>
+            <Card data={headphones} clickHandle={clickHandle} inFavorited={inFavorited}/>
         </section>
     )
 }

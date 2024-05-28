@@ -9,6 +9,7 @@ import UslovieService from './pages/UslovieService/UslovieService'
 import Contacts from './pages/Contacts/Contacts'
 import Footer from './components/Footer'
 import AdminPanel from './pages/adminPanel/adminPanel'
+import Favorites from './pages/Favorites'
 
 const App: React.FC = () => {
   const location = useLocation()
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         <Route path="/admin/*" element={<AdminPanel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
       <Footer />
     </div>
