@@ -19,9 +19,6 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
                 arr.push(doc.data());
             });
             setHeadphones(arr.filter((el: Idata) =>  el.categoryId === '/categories/Headphones' && {...el, isFavorited: false}))
-
-            
-            
         });
         return () => unsubscribe()
     }, []) 

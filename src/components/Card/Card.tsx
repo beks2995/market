@@ -12,7 +12,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
 
-    // console.log(data);
+    // console.log(inFavorited);
     
     return (
         <div className="products">
@@ -23,7 +23,7 @@ const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
                             <div className="card__top">
                                 <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle(el)}>
                                     {
-                                        // inFavorited.length > 0 ? inFavorited.find((item: Idata) => item.description === el.description).isFavorited : el.isFavorited
+                                        // inFavorited.length > 0 ? inFavorited.find((item: Idata) => (item.description === el.description)).isFavorited : el.isFavorited
                                         el.isFavorited
                                         ?
                                         <svg width="20" height="19" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
