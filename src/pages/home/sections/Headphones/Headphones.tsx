@@ -17,8 +17,8 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
             const arr:any = [];
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data());
-            });
-            setHeadphones(arr.filter((el: Idata) =>  el.categoryId === '/categories/Headphones' && {...el, isFavorited: false}))
+            });            
+            setHeadphones(arr.filter((el: Idata) =>  el.categoryId.id === 'Headphones' && {...el, isFavorited: false}))
         });
         return () => unsubscribe()
     }, []) 

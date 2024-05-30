@@ -18,7 +18,7 @@ const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data()); 
             });
-            setWirelessHeadphones(arr.filter((el: Idata) => el.categoryId === '/categories/Wireless-Headphones' && {...el, isFavorited: false}))
+            setWirelessHeadphones(arr.filter((el: Idata) => el.categoryId.id === 'Wireless-Headphones' && {...el, isFavorited: false}))
         });
         return () => unsubscribe()
     }, []) 

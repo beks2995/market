@@ -1,5 +1,6 @@
 import { FC, SetStateAction, useEffect, useState } from "react";
 import { Idata } from "../home/interfaces";
+import Card from "../../components/Card";
 
 const Favorites:FC = () => {
     const [favoriteProducts, setFavoriteProducts] = useState<SetStateAction<Idata[]>>([])
@@ -8,14 +9,11 @@ const Favorites:FC = () => {
         
     }, [])
     console.log(favoriteProducts);
-    // const q = localStorage.getItem('inFavorited') || Array
-    // const p = JSON.parse(q)
-    // console.log(p);
     
 
     return (
         <div>
-            
+            {/* <Card /> */}
         </div>
     )
 }

@@ -35,7 +35,7 @@ const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
                                         </svg>
                                     }
                                 </div>
-                                <div  className="card__top-img"><img src={el.img[0]} alt="" /></div>
+                                <div  className="card__top-img"><img src={el.images[0]} alt="" /></div>
                             </div>
                             <Link to={`/product/${el.name}`}><Info el={el}/></Link>
                             <div className="card__estimation">
