@@ -4,9 +4,11 @@ import './Card.css'
 import Info from "../Card/info";
 import { Link } from "react-router-dom";
 interface IProps {
+
     data : Idata[];
     clickHandle(el: Idata): void
     inFavorited: any | Array<Idata> 
+
 }
 
 
@@ -21,7 +23,7 @@ const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
                     data && data.map((el, indx) => (
                         <div key={indx} className="card">
                             <div className="card__top">
-                                <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle(el)}>
+                                <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle && clickHandle(el)}>
                                     {
                                         // inFavorited.length > 0 ? inFavorited.find((item: Idata) => (item.description === el.description)).isFavorited : el.isFavorited
                                         el.isFavorited

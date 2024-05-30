@@ -1,35 +1,41 @@
 import UserComment from "./UserComment";
 import CommentTextArea from "./CommentTextArea";
 import { useEffect, useState } from "react";
-import {Comment} from "./types"
+import { Comment } from "./types";
+import { Review, User } from "../../types/types";
+import useAuth from "../../hooks/useAuth";
 
+type CommentSectionProps = {
+  reviews: Review[];
+  user: User;
+};
 
-function CommentSection() {
-  const [comments, setComments] = useState<Comment[] | null>(null);
-
-  useEffect(() => {
-    setComments([
-      {
-        username: "Бекназар",
-        comment:
-          "Спасибо большое! Держатель супер! Легко установил красивый дизайн.Самое главное, что заряжает мой телефон",
-      },
-      {
-        username: "Буран",
-        comment:
-          "Коробка была немного повреждена но держатель не пострадал. Очень хороший держатель для тех кто часто снимает телефон. Покупаю второй для работы. ",
-      },
-    ]);
-  }, []);
+function CommentSection({ reviews }: CommentSectionProps) {
+  const [comments, setComments] = useState<Review[] | null>(
+    [...reviews].reverse()
+  );
+  const user = useAuth();
 
   return (
     <div>
       <div className="mb-20 space-y-6">
         {comments?.map((c) => (
-          <UserComment username={c.username} comment={c.comment} />
+          <UserComment
+            key={c.id}
+            username={c.username}
+            comment={c.comment}
+            rating={c.rating}
+          />
         ))}
       </div>
-      <CommentTextArea setComments={setComments}/>
+      {user ? (
+        <CommentTextArea
+          setComments={setComments}
+          username={user?.displayName ?? "User"}
+        />
+      ) : (
+        <div>Отзыв мошут оставлять только зарегистрированные пользователи</div>
+      )}
     </div>
   );
 }

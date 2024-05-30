@@ -13,8 +13,9 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
     const [headphones, setHeadphones] = useState<Array<Idata>>([])
     useEffect (() => {
         const q = query(collection(db, "items"));
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const arr:any = [];
+            const arr: any = [];
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data());
             });            
@@ -24,18 +25,21 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
     }, []) 
     console.log(headphones);
     
+
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
         setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if(el.isFavorited){
+        if (el.isFavorited) {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }
+
         
     } 
     return (
         <section className="headphones">
             <p className="title">Наушники</p>
             <Card data={headphones} clickHandle={clickHandle} inFavorited={inFavorited}/>
+
         </section>
     )
 }

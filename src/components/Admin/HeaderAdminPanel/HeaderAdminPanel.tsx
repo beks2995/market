@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import './HeaderAdminPanel.css';
+import Header from '../../Header/Header';
 
 const HeaderAdminPanel = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,10 +33,10 @@ const HeaderAdminPanel = () => {
     };
 
     return (
-        <div className="header__admin-panel">
+        <header className="header__admin-panel">
             <div className="container__admin">
                 <div className="header__container">
-                    <a href="#" className="header__admin-title">QPICK</a>
+                    <Link to='/' className="header__admin-title">QPICK</Link>
                     <div className='iconPositionDiv'>
                         <Link
                             to="/profile"
@@ -61,7 +62,7 @@ const HeaderAdminPanel = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
 

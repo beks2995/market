@@ -1,4 +1,4 @@
-.category{
+.category {
     border-radius: 15px;
     background: rgb(214, 214, 214);
     width: 100%;
@@ -8,10 +8,10 @@
     border: none;
     padding: 14px;
     color: rgb(142, 142, 142);
-font-family: Montserrat;
-font-size: 15px;
-font-weight: 500;
-line-height: 18px;
-letter-spacing: 0%;
-text-align: left;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
 }

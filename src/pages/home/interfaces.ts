@@ -10,4 +10,5 @@ export interface Idata {
     priceBeforeDiscount: string;
     isFavorited : boolean;
     categoryId: {id : string}
+
 }

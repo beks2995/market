@@ -1,3 +1,5 @@
+import {Review} from "../../types/types"
+
 export type ImageContainerProps = { images: string[] };
 
 export type PriceTagProps = {
@@ -23,6 +25,7 @@ export type ButtonProps={
 export type CommentProps = {
   username: string;
   comment: string;
+  rating:number;
 };
 
 export type Comment = {
@@ -31,5 +34,6 @@ export type Comment = {
 };
 
 export type CommentTextAreaProps = {
-  setComments: React.Dispatch<React.SetStateAction<Comment[] | null>>;
+  setComments: React.Dispatch<React.SetStateAction<Review[] | null>>;
+  username:string;
 };

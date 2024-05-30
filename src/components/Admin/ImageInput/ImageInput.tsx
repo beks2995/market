@@ -27,11 +27,10 @@ const ImageInput: React.FC<ImageInputProps> = ({ onChange }) => {
         onChange={handleInputChange}
       />
       <label htmlFor="file-upload-button" className="custom-file-upload">
-        {fileNames}
+        {fileNames.join(', ')}
       </label>
     </div>
-  );
+  )
 }
 
 export default ImageInput
-

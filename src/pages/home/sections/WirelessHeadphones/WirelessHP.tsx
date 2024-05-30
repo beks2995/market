@@ -13,19 +13,22 @@ const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
     const [wirelessHeadphones, setWirelessHeadphones] = useState<Array<Idata>>([])
     useEffect (() => {
         const q = query(collection(db, "items"));
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const arr:any = [];
+            const arr: any = [];
             querySnapshot.forEach((doc) => {
                 arr.push(doc.data()); 
             });
+
             setWirelessHeadphones(arr.filter((el: Idata) => el.categoryId.id === 'Wireless-Headphones' && {...el, isFavorited: false}))
+
         });
         return () => unsubscribe()
-    }, []) 
+    }, [])
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
         setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if(el.isFavorited){
+        if (el.isFavorited) {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }
         
@@ -34,6 +37,7 @@ const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
         <section className="wirelessHeadphones">
             <p className="title">Безпроводные</p>
             <Card data={wirelessHeadphones} clickHandle={clickHandle} inFavorited={inFavorited}/>
+
         </section>
     )
 }

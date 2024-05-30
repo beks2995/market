@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, setDoc, getDoc, doc } from 'firebase/firestore'
 import { initializeApp, getApps } from 'firebase/app'
 import ImageInput from '../ImageInput/ImageInput'
 import TextInput from '../TextInput/TextInput'
@@ -31,84 +31,88 @@ const categories = [
   'Headphones', 'Wireless-Headphones', 'Apple', 'Asus', 'Blackview', 'Cat', 'HMD', 'Honor', 'HTC', 'HUAWEI',
   'Infinix', 'INOI', 'Itel', 'Lenovo', 'LG', 'Meizu', 'Nokia', 'Nubia','OnePlus', 'Oppo', 'Realme', 'Samsung', 'Sony', 'Tecno', 'Ulefone',
   'Vivo', 'Vsmart', 'XIAOMI', 'ZTE'
-];
+] 
 
 const AddDataForm: React.FC = () => {
   const [device, setDevice] = useState<Device>({
     name: '',
     priceBeforeDiscount: '',
     priceAfterDiscount: '',
-    category: '',
     img: '',
     description: '',
     inFavorite: false,
     inBasket: false,
-    estimation: '5'
-  })
+    defaultRating: '5',
+  });
+  
+  const [categoryId, setCategoryId] = useState<string>('');
+  const [images, setImages] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setDevice((prevState: Device) => ({
-      ...prevState,
-      [name]: value
-    }))
-  }
+    const { name, value } = e.target;
+    if (name === 'category') {
+      setCategoryId(value);
+    } else {
+      setDevice((prevState: Device) => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
+  };
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
+    const files = e.target.files;
+    if (files) {
       try {
-        const base64Img = await toBase64(file);
-        setDevice((prevState: Device) => ({
-          ...prevState,
-          img: base64Img
-        }))
+        const base64Imgs = await Promise.all(Array.from(files).map(file => toBase64(file)));
+        setImages(base64Imgs);
       } catch (error) {
         console.error("ошибка при преобразовании изображения в base64: ", error);
       }
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const productsCollectionRef = collection(firestore, 'products')
-    const productDocRef = doc(productsCollectionRef, 'product_id')
-
+    e.preventDefault();
     try {
-      const productDocSnapshot = await getDoc(productDocRef)
-      if (!productDocSnapshot.exists()) {
-        await setDoc(productDocRef, {})
+      const categoryCollectionRef = collection(firestore, 'categories');
+      const categoryDocRef = doc(categoryCollectionRef, categoryId);
+      const categoryDocSnapshot = await getDoc(categoryDocRef);
+      
+      if (!categoryDocSnapshot.exists()) {
+        await setDoc(categoryDocRef, { name: categoryId });
       }
-
-      const categoryName = device.category.trim()
-      if (!categoryName) {
-        console.error('Имя категории пусто')
-        return
-      }
-
-      const categoryCollectionRef = collection(productDocRef, categoryName)
-
-      await addDoc(categoryCollectionRef, {
+  
+      const itemsCollectionRef = collection(firestore, 'items');
+      const newItemRef = await addDoc(itemsCollectionRef, {
         ...device,
+        img: images,
+        categoryId: `/categories/${categoryId}`,
         inFavorite: false,
         inBasket: false,
-      })
-
+      });
+    
+      // const reviewsCollectionRef = collection(firestore, `items/${newItemRef.id}/reviews`);
+      // await addDoc(reviewsCollectionRef, {}); 
+  
       setDevice({
         name: '',
         priceBeforeDiscount: '',
         priceAfterDiscount: '',
-        category: '',
         img: '',
         description: '',
         inFavorite: false,
         inBasket: false,
-        estimation: '5'
-      })
+        defaultRating: '5',
+      });
+      
+      setImages([]);  
+      setCategoryId('');  
     } catch (error) {
-      console.error("Ошибка при добавлении устройства: ", error)
+      console.error("Ошибка при добавлении устройства: ", error);
     }
-  }
+  };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -126,7 +130,7 @@ const AddDataForm: React.FC = () => {
         />
         <CategorySelect
           categories={categories}
-          value={device.category}
+          value={categoryId}
           onChange={handleChange}
         />
       </div>

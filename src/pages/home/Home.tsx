@@ -1,9 +1,12 @@
+
 import { FC, useState, SetStateAction, useEffect } from "react";
 import './Homepage.css'
+
 import Top from "./sections/top";
-import Headphones from "./sections/Headphones";
+import Headphones from "../../pages/home/sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
 import { Idata } from "./interfaces";
+
 
 const Home: FC  = () => {
     const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
@@ -21,5 +24,17 @@ const Home: FC  = () => {
             <WirelessHP inFavorited={inFavorited} setInFavorited={setInFavorited}/>
         </main>
     )
+
 }
-export default Home
+
+const Home: FC<HomeProps> = ({ setFavoritedCount }) => {
+  return (
+    <main className="main">
+      <Top />
+      <Headphones setFavoritedCount={setFavoritedCount} />
+      <WirelessHP setFavoritedCount={setFavoritedCount}/>
+    </main>
+  );
+}
+
+export default Home;
