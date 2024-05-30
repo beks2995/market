@@ -8,7 +8,7 @@ import Home from './pages/home';
 import ProductPage from './pages/product/ProductPage';
 import UslovieService from './pages/UslovieService/UslovieService'
 import Contacts from './pages/Contacts/Contacts'
-import Footer from './components/Footer'
+import Footer from './components/Footer/Footer';
 import AdminPanel from './pages/adminPanel/adminPanel'
 import Favorites from './pages/Favorites'
 import { useWindowSize } from 'react-use';
@@ -33,7 +33,7 @@ const App: FC = () => {
 
   return (
     <div>
-      {!isAdminRoute && <Header />}
+      {!isAdminRoute && <Header favoritedCount={favoritedCount} isMobile={isMobile}/>}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<div>About Page</div>} />
@@ -47,7 +47,7 @@ const App: FC = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
-      <Footer />
+      <Footer isMobile={isMobile}/>
     </div>
   )
 
