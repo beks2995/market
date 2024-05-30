@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #eaeaea;
+}
+
+.container {
+    max-width: 1100px;
+}
+
+
+
+.uslovieServiceTitle {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.uslovieServiceDescription {
+    font-weight: 400;
+    font-size: 17px;
+    color: #000;
+}
+
+.uslovieServiceCard {
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 1107px;
+    height: 162px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.UslovieServiceCards {
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
+}
+
+.UsFooter {
+    margin-top: 37px;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.UsFooterLanguage {
+    display: flex;
+    gap: 10px;
+}
+
+.map {
+    width: 722px;
+    height: 424px;
+
+
+}
+
+.contacts_title {
+    font-weight: 600;
+    font-size: 17px;
+    color: #1c1c27;
+}
+
+.map-box {
+    margin-left: 260px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 30px;
+    width: 720px;
+    height: 500px;
+    padding: 15px 20px 50px 17px;
+}
+
+.Contacts_top {
+    display: flex;
+}
+
+.contacts_address {
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+}
+
+.address_floor {
+    margin-top: -10px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #838383;
+}
+
+.Contacts_number {
+    font-weight: 600;
+    font-size: 25px;
+    color: #000;
+    margin-left: 250px;
+}
+/* ul li {
+    list-style-type: none;
+}
+nav{
+margin-top: -30px;
+}
+nav img{
+    margin-bottom: -18px;
+    width: 97px;
+    height: 97px;
+} */

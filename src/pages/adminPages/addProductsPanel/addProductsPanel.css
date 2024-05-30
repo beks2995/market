@@ -1,0 +1,28 @@
+.container {
+    width: 957px;
+
+}
+
+.addProductsPanel {
+    width: 1155px;
+    height: 1150px;
+    border-radius: 30px;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.addProductsPanel__title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: 57px;
+    margin-bottom: 85px;
+    margin-left: 100px;
+}

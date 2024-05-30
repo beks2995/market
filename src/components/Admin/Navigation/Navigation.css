@@ -1,0 +1,30 @@
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 114px;
+    margin-top: 114px;
+    margin-bottom: 126px;
+    padding: 0px;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none ;
+  }
+  
+  nav ul li a.active-link {
+    color: rgb(255, 165, 66);
+    text-decoration: underline;
+  }
+  .navigation__container{
+    width: 1155px;
+    justify-content: start;
+  }
+  

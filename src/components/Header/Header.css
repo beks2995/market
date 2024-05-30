@@ -1,0 +1,272 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 165px 0px 165px;
+    background-color: #eaeaea;
+    color: white;
+    font-family: var(--font-family);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.logoAndNav {
+    display: flex;
+    align-items: center;
+    gap: 75px;
+}
+
+.logoLink {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 25px;
+    color: #101010;
+    text-decoration: none;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.nav-toggle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-toggle:hover {
+    cursor: pointer;
+}
+
+/* .nav-menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav-menu.open {
+    display: list-item; 
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+} */
+
+.nav-menu li {
+    padding: 10px;
+}
+
+.icons {
+    display: flex;
+
+}
+
+.profile-dropdown {
+    position: absolute;
+    background-color: #444;
+    border-radius: 0 0 30px 30px;
+    padding: 15px 15px 19px 16px;
+    display: flex;
+    flex-direction: column;
+    right: 5.5%;
+    top: 7%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #eaeaea;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 9px;
+}
+
+.profile-dropdown-btn-1 {
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.profile-dropdown-btn-2 {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    background: none;
+    border: none;
+}
+
+.profile-dropdown-btn-1 a,
+.profile-dropdown-btn-2 a {
+    text-decoration: none;
+}
+
+.profile-dropdown-btn-1 a {
+    color: #101010;
+}
+
+.profile-dropdown-btn-2 a {
+    color: #ffa542;
+}
+
+.profile-dropdown-btn-3 {
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.profile-dropdown-btn-3:hover {
+    cursor: pointer;
+}
+
+.cart {
+    background: none;
+    border: none;
+    text-decoration: none;
+}
+
+.profile {
+    background: none;
+    border: none;
+    text-decoration: none;
+}
+
+.wishlist {
+    background: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+.iconPositionDiv {
+    padding: 20px;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: 12%;
+    right: 16%;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9.21416' cy='8.7' r='8.7' fill='%23FFA542' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.badge>p {
+    transform: translateY(-8%);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+}
+
+.backButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 3px 9px 10px;
+    gap: 20px;
+    color: #101010;
+}
+
+.burger_menu {
+    padding-right: 20px;
+}
+
+.menu {
+    position: fixed;
+    /* Position the menu relative to the viewport */
+    top: 4%;
+    /* Adjust the top position as needed */
+    right: 20%;
+    /* Position the menu to the top right corner */
+    z-index: 999;
+    /* Ensure the menu appears above other content */
+    padding: 10px;
+    /* Optional: Add padding for content */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #eaeaea;
+    list-style: none;
+    display: block;
+    /* Hide the menu by default */
+    border-radius: 0 0 0 20px;
+}
+
+.menu li {
+    margin-bottom: 18px;
+}
+
+.menu_ul_wishlist>a {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+    gap: 10px;
+}
+
+.menu_ul_profile>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_contacts>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu_ul_lang p {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}
+
+.menu_ul_terms>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 15px;
+    color: #101010;
+}

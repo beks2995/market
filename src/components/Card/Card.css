@@ -1,0 +1,38 @@
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    width: 350px;
+    height: 407px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 15px 21px 32px 21px;
+}
+.card__top{
+    display: flex;
+    gap: 24px;
+}
+.card__top-img{
+    width: 219px;
+    height: 237px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card__estimation{
+    display: flex;
+    margin-top: 9px;
+    gap: 8px;
+    align-items: start;
+}
+.card__estimation-text{
+    font-weight: 600;
+    font-size: 17px;
+    color: #838383;
+}
