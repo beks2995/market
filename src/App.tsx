@@ -20,6 +20,16 @@ const App: FC = () => {
   const [isMobile, setIsMobile] = useState<boolean>(width < 429);
   const location = useLocation()
   const isAdminRoute = location.pathname.startsWith('/Admin')
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 429);
+      // console.log('isMobile:', isMobile)
+      window.addEventListener('resize', handleResize);
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
+    }
+  });
 
   return (
     <div>
@@ -40,46 +50,9 @@ const App: FC = () => {
       <Footer />
     </div>
   )
-}
-
-  useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 429);
-    // console.log('isMobile:', isMobile)
-};
-
-window.addEventListener('resize', handleResize);
 
 
-// Cleanup function to remove event listener
-return () => {
-    window.removeEventListener('resize', handleResize);
-};
-});
-  return (
-    <Router>
-      <div>
-        <Header favoritedCount={favoritedCount} isMobile={isMobile}/>{/* Adding the Header to the App component */}
-        <main className='Content'>
-        <Routes>
-          <Route path="/" element={<Home setFavoritedCount={setFavoritedCount}/>} />
-          <Route path="/about" element={<div>About Page</div>} />
-          <Route path='/uslovie' element={<UslovieService />}></Route>
-          <Route path='/contacts' element={<Contacts />}></Route>
-          <Route path='wishlist' element={<div>Wishlist</div>}></Route>
-          <Route path="/cart" element={<div>Cart Page</div>} />
-          <Route path="/product/:id" element={<ProductPage/>} />
-          <Route path='/admin/*' element={<AdminPanel/>}></Route>
-        </Routes>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-        </main>
-        <Footer isMobile={isMobile}/>
-      </div>
-    </Router>
-  )
+
 }
 
 export default App
