@@ -8,9 +8,11 @@ import Home from './pages/home';
 import ProductPage from './pages/product/ProductPage';
 import UslovieService from './pages/UslovieService/UslovieService'
 import Contacts from './pages/Contacts/Contacts'
-import Footer from './components/Footer/Footer'
-import AdminPanel from './pages/adminPanel/adminPanel';
+import Footer from './components/Footer'
+import AdminPanel from './pages/adminPanel/adminPanel'
+import Favorites from './pages/Favorites'
 import { useWindowSize } from 'react-use';
+
 
 const App: FC = () => {
   const [favoritedCount, setFavoritedCount] = useState(0);
@@ -19,6 +21,27 @@ const App: FC = () => {
   const location = useLocation()
   const isAdminRoute = location.pathname.startsWith('/Admin')
 
+  return (
+    <div>
+      {!isAdminRoute && <Header />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<div>About Page</div>} />
+        <Route path="/uslovie" element={<UslovieService />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/cart" element={<div>Cart Page</div>} />
+        <Route path="/profile" element={<div>Profile</div>} />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/admin/*" element={<AdminPanel />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+      <Footer />
+    </div>
+  )
+}
+
   useEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 429);
@@ -26,6 +49,7 @@ const App: FC = () => {
 };
 
 window.addEventListener('resize', handleResize);
+
 
 // Cleanup function to remove event listener
 return () => {

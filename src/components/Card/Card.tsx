@@ -2,49 +2,20 @@ import { FC, MouseEvent } from "react";
 import { Idata } from "../../pages/home/interfaces";
 import './Card.css'
 import Info from "../Card/info";
+import { Link } from "react-router-dom";
 interface IProps {
-    data? : Idata[];
-    clickHandle?(el: Idata): void
+
+    data : Idata[];
+    clickHandle(el: Idata): void
+    inFavorited: any | Array<Idata> 
+
 }
 
 
-const Card: FC<IProps> = ({data, clickHandle}) => {
-    // const [data, setData] = useState<Array<Idata>>([])
-    // const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
-    // useEffect (() => {
-    //     const q = query(collection(db, "products/product_id/Headphones"));
-    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    //         const arr:any = [];
-    //         querySnapshot.forEach((doc) => {
-    //             arr.push(doc.data());
-    //         });
-    //         setData(arr.map((el: Idata) =>  ({...el, isFavorited: false})))
-    //         // setData(arr)
-    //     });
-    //     return () => unsubscribe()
-    // }, []) 
-    // console.log(data);
-    // const clickHandle = (el: Idata) => {
-    //     el.isFavorited = !el.isFavorited
-    //     setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-    //     if(el.isFavorited){
-    //         setInFavorited((prev: Idata[]) => [...prev, el])
-    //     }
-        
-    // } 
-    // useEffect(() => {
-    //     localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
-    // }, [inFavorited])
-    // const getProductsSubcollections = async () => {
-    //     const productsRef = db.collection("products");
-    //     const subcollections = await productsRef.listCollections();
-      
-    //     subcollections.forEach((subcollection) => {
-    //       console.log(subcollection.id);
-    //     });
-    // };
-    // getProductsSubcollections();
+const Card: FC<IProps> = ({data, clickHandle, inFavorited}) => {
 
+    // console.log(inFavorited);
+    
     return (
         <div className="products">
             <div className="cards">
@@ -54,6 +25,7 @@ const Card: FC<IProps> = ({data, clickHandle}) => {
                             <div className="card__top">
                                 <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle && clickHandle(el)}>
                                     {
+                                        // inFavorited.length > 0 ? inFavorited.find((item: Idata) => (item.description === el.description)).isFavorited : el.isFavorited
                                         el.isFavorited
                                         ?
                                         <svg width="20" height="19" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
@@ -65,14 +37,14 @@ const Card: FC<IProps> = ({data, clickHandle}) => {
                                         </svg>
                                     }
                                 </div>
-                                <div  className="card__top-img"><img src={el.img} alt="" /></div>
+                                <div  className="card__top-img"><img src={el.images[0]} alt="" /></div>
                             </div>
-                            <Info el={el}/>
+                            <Link to={`/product/${el.name}`}><Info el={el}/></Link>
                             <div className="card__estimation">
                                 <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.6268 17.6026L5.41618 21.9608L7.37647 13.8272L0.960754 8.38856L9.38215 7.72087L12.6268 0L15.8715 7.72087L24.2941 8.38856L17.8771 13.8272L19.8374 21.9608L12.6268 17.6026Z" fill="#FFCE7F"/>
                                 </svg>
-                                <p className="card__estimation-text">{el.estimation}</p>
+                                <p className="card__estimation-text">{el.defaultRating}</p>
                             </div>
                         </div>
                     ))
