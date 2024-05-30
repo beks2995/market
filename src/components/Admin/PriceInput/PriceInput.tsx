@@ -2,12 +2,12 @@ import React from 'react'
 import './PriceInput.css'
 
 interface PriceInputProps {
-  priceBeforeDiscount: string
-  priceAfterDiscount: string
+  price: any
+  priceWithDiscount: any
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const PriceInput: React.FC<PriceInputProps> = ({ priceBeforeDiscount, priceAfterDiscount, onChange }) => {
+const PriceInput: React.FC<PriceInputProps> = ({ price, priceWithDiscount, onChange }) => {
   return (
     <>
     <div className='container__priceInput'>
@@ -15,9 +15,9 @@ const PriceInput: React.FC<PriceInputProps> = ({ priceBeforeDiscount, priceAfter
         <input
           className='PriceInput'
           type="text"
-          name="priceBeforeDiscount"
+          name="price"
           placeholder="Цена до скидки"
-          value={priceBeforeDiscount}
+          value={price}
           onChange={onChange}
         />
         <span className="icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,9 +28,9 @@ const PriceInput: React.FC<PriceInputProps> = ({ priceBeforeDiscount, priceAfter
         <input
           className='PriceInput'
           type="text"
-          name="priceAfterDiscount"
+          name="priceWithDiscount"
           placeholder="Цена со скидкой"
-          value={priceAfterDiscount}
+          value={priceWithDiscount}
           onChange={onChange}
         />
         <span className="icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
