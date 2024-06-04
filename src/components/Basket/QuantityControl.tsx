@@ -29,9 +29,9 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ itemId, quantity, onQ
                 await updateDoc(userDocRef, { cart: updatedCart })
                 onQuantityChange(itemId, newQuantity);
 
-                console.log('quantity updated');
+                console.log('количество товаров обновлено');
             } catch (error) {
-                console.error('error updating quantity: ', error)
+                console.error('ошибка с счетчиком товаров: ', error)
             }
         }
     }
