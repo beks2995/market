@@ -11,6 +11,7 @@ import Contacts from './pages/Contacts/Contacts';
 import Footer from './components/Footer/Footer';
 import AdminPanel from './pages/adminPanel/adminPanel';
 import Cart from './components/Basket/Cart';
+import Checkout from './components/Basket/CheckoutPage';
 
 const App: FC = () => {
   const [favoritedCount, setFavoritedCount] = useState(0);
@@ -45,6 +46,7 @@ const App: FC = () => {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path='/admin/*' element={<AdminPanel />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />

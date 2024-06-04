@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase/firestore';
-import { doc, getDoc, updateDoc, arrayRemove } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, DocumentReference } from 'firebase/firestore';
 import useAuth from '../../hooks/useAuth';
 import { Item } from '../../types/types';
-import AddToCartButton from './AddToCartButton';
+import QuantityControl from './QuantityControl';
+import Delivery from './Delivery';
 
 interface CartItem {
-    itemId: string;
+    itemId: DocumentReference;
     quantity: number;
 }
 
 const Cart: React.FC = () => {
     const user = useAuth();
+    const navigate = useNavigate();
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
     const [itemsData, setItemsData] = useState<Item[]>([]);
+    const [deliveryOption, setDeliveryOption] = useState('courier');
 
     useEffect(() => {
         const fetchCartItems = async () => {
@@ -33,12 +37,12 @@ const Cart: React.FC = () => {
         const fetchItemsData = async () => {
             const itemsPromises = cartItems.map(async (cartItem) => {
                 if (cartItem.itemId) {
-                    const itemDocRef = doc(db, 'items', cartItem.itemId);
-                    const itemDocSnap = await getDoc(itemDocRef);
-                    return itemDocSnap.exists() ? itemDocSnap.data() as Item : null;
-                } else {
-                    return null;
+                    const itemDocSnap = await getDoc(cartItem.itemId);
+                    if (itemDocSnap.exists()) {
+                        return { ...itemDocSnap.data(), id: cartItem.itemId.id } as Item;
+                    }
                 }
+                return null;
             });
 
             const items = await Promise.all(itemsPromises);
@@ -49,25 +53,46 @@ const Cart: React.FC = () => {
     }, [cartItems]);
 
     const handleRemoveFromCart = async (itemId: string) => {
-        console.log('Attempting to remove item with itemId:', itemId);
         if (user) {
             try {
                 const userDocRef = doc(db, 'users', user.uid);
+                const userDocSnap = await getDoc(userDocRef)
+                const currentCart = userDocSnap.data()?.cart || []
+                const updatedCart = currentCart.filter((item: CartItem) => item.itemId.id !== itemId)
+
                 await updateDoc(userDocRef, {
-                    cart: arrayRemove(itemId), // Передача значения для удаления из массива
+                    cart: updatedCart,
                 });
-                console.log('Item removed from cart in Firestore');
 
-                // Обновление состояния cartItems путем фильтрации элемента с совпадающим itemId
-                setCartItems(prevCartItems =>
-                    prevCartItems.filter(cartItem => cartItem.itemId !== itemId)
-                );
+                setCartItems(updatedCart);
 
-                console.log('Товар удален из корзины');
             } catch (error) {
                 console.error('Ошибка при удалении товара из корзины: ', error);
             }
         }
+    };
+
+    const handleQuantityChange = (itemId: string, newQuantity: number) => {
+        setCartItems(prevCartItems => 
+            prevCartItems.map(cartItem => 
+                cartItem.itemId.id === itemId 
+                ? { ...cartItem, quantity: newQuantity } 
+                : cartItem
+            )
+        );
+    };
+
+    const handleDeliveryChange = (option: string) => {
+        setDeliveryOption(option);
+    };
+
+    const handleCheckout = () => {
+        const serializableCartItems = cartItems.map(cartItem => ({
+            itemId: cartItem.itemId.id, 
+            quantity: cartItem.quantity,
+        }));
+    
+        navigate('/checkout', { state: { cartItems: serializableCartItems, deliveryOption } });
     };
 
     return (
@@ -80,19 +105,16 @@ const Cart: React.FC = () => {
                             <h3>{item.name}</h3>
                             <p>{item.price} т</p>
                             <p>Количество: {
-                                cartItems.find(cartItem => cartItem.itemId === item.id)?.quantity ?? 0
+                                <QuantityControl
+                                    itemId={item.id}
+                                    quantity={cartItems.find(cartItem => cartItem.itemId.id === item.id)?.quantity ?? 0}
+                                    onQuantityChange={handleQuantityChange}
+                                />
                             }</p>
                         </div>
                         <button
                             className="text-red-500"
-                            onClick={() => {
-                                if (item.id) {
-                                    console.log('Attempting to remove item with id:', item.id);
-                                    handleRemoveFromCart(item.id);
-                                } else {
-                                    console.log('Item id is undefined. Ignoring removal.');
-                                }
-                            }}
+                            onClick={() => handleRemoveFromCart(item.id)}
                         >
                             Удалить
                         </button>
@@ -100,6 +122,14 @@ const Cart: React.FC = () => {
                 ))
             ) : (
                 <p>Ваша корзина пуста</p>
+            )}
+            {itemsData.length > 0 && (
+                <>
+                    <Delivery onDeliveryChange={handleDeliveryChange} />
+                    <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={handleCheckout}>
+                        Перейти к оформлению
+                    </button>
+                </>
             )}
         </div>
     );
