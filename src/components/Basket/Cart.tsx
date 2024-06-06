@@ -24,9 +24,8 @@ export interface Item {
     id: string;
     name: string;
     price: number;
+    images: string;
 }
-
-const base64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHIAAALUCAYAAABn3hUlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUA";  // Base64 string truncated for brevity
 
 const Cart: React.FC = () => {
     const user = useAuth();
@@ -71,11 +70,11 @@ const Cart: React.FC = () => {
 
     useEffect(() => {
         const totalPrice = itemsData.reduce((acc, item) => {
-            const cartItem= cartItems.find(cartItem => cartItem.itemId.id ===item.id)
-            return acc +  (item.price * (cartItem?.quantity ?? 0))
-        }, 0)
-        setTotal(totalPrice)
-    }, [itemsData, cartItems])
+            const cartItem = cartItems.find(cartItem => cartItem.itemId.id === item.id);
+            return acc + (item.price * (cartItem?.quantity ?? 0));
+        }, 0);
+        setTotal(totalPrice);
+    }, [itemsData, cartItems]);
 
     const handleRemoveFromCart = async (itemId: string) => {
         if (user) {
@@ -127,9 +126,9 @@ const Cart: React.FC = () => {
                 itemsData.map((item, index) => (
                     <div key={index} className="flex justify-between p-4 border-b">
                         <div>
-                            <img src={base64Image} alt={item.name} style={{ width: '50px', height: '50px' }} />
+                            <img src={item.images} alt={item.name} style={{ width: '100px', height: '100px' }} />
                             <h3>{item.name}</h3>
-                            <p>{item.price} т</p>
+                            <p>{item.price} сом</p>
                             <p>Количество: {
                                 <QuantityControl
                                     itemId={item.id}
@@ -154,7 +153,7 @@ const Cart: React.FC = () => {
                     <Delivery onDeliveryChange={handleDeliveryChange} />
                     <div className="flex justify-between p-4 mt-4 ">
                         <span>ИТОГО</span>
-                        <span>{total + 499} т</span>
+                        <span>{total + 499} сом</span>
                     </div>
                     <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={handleCheckout}>
                         Перейти к оформлению

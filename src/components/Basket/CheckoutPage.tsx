@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from '../../firebase/firestore';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Checkout: React.FC = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { cartItems, deliveryOption } = location.state || {}
 
     const [itemsData, setItemsData] = useState<any[]>([])
@@ -19,12 +20,15 @@ const Checkout: React.FC = () => {
     });
     const [showQRCode, setShowQRCode] = useState<boolean>(false)
     const [orderId, setOrderId] = useState<string>('')
+    const [orderNumber, setOrderNumber] = useState<string>('')
     const [errors, setErrors] = useState<any>({})
 
     useEffect(() => {
         const generateOrderId = () => {
             const newOrderId = `order_${Date.now()}`
             setOrderId(newOrderId)
+            const newOrderNumber = `${Math.floor(100000 + Math.random() * 900000)}`
+            setOrderNumber(newOrderNumber)
         };
 
         generateOrderId();
@@ -85,12 +89,14 @@ const Checkout: React.FC = () => {
             customerPhone,
             deliveryAddress,
             paymentStatus: 'pending',
-            createdAt: new Date()
+            createdAt: new Date(),
+            orderNumber 
         }
 
         try {
             await setDoc(doc(db, 'orders', orderId), orderData)
             alert('заказ успешно создан')
+            navigate('/order-confirmation', { state: { orderId, orderNumber } });
         } catch (error) {
             console.error('ошибка при создании заказа:', error)
         }
@@ -143,20 +149,11 @@ const Checkout: React.FC = () => {
                     <h3>Ваш заказ</h3>
                     {itemsData.map((item, index) => (
                         <div key={index}>
-                            <p>{item.name} x {item.quantity} = {item.totalCost} т</p>
+                            <p> {item.quantity}х {item.name}   {item.totalCost} сом</p>
                         </div>
                     ))}
-                    <h3>Способ доставки</h3>
-                    <p>{deliveryOption === 'courier' ? 'Доставка курьером - 499 т' : 'Самовывоз - бесплатно'}</p>
-                    <h3>Общая стоимость</h3>
-                    <p>{finalTotalCost} т</p>
-                    <input
-                        type="text"
-                        placeholder="Номер получателя"
-                        value={customerPhone}
-                        onChange={e => setCustomerPhone(e.target.value)}
-                    />
-                    {errors.customerPhone && <p style={{ color: 'red' }}>{errors.customerPhone}</p>}
+                    <p>{deliveryOption === 'courier' ? 'Доставка  499 сом' : 'Самовывоз - бесплатно'}</p>
+                    <p>К оплате {finalTotalCost} сом</p>             
                     <h3>Способ оплаты</h3>
                     <div>
                         <button
@@ -172,6 +169,13 @@ const Checkout: React.FC = () => {
                             </div>
                         )}
                     </div>
+                    <input
+                        type="text"
+                        placeholder="Номер получателя"
+                        value={customerPhone}
+                        onChange={e => setCustomerPhone(e.target.value)}
+                    />
+                    {errors.customerPhone && <p style={{ color: 'red' }}>{errors.customerPhone}</p>}
                     <button
                         className="mt-4 px-4 py-2  "
                         onClick={handleOrderSubmit}
@@ -185,4 +189,3 @@ const Checkout: React.FC = () => {
 };
 
 export default Checkout;
-
