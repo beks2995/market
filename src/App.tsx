@@ -13,8 +13,7 @@ import AdminPanel from './pages/adminPanel/adminPanel';
 import Cart from './components/Basket/Cart';
 import Checkout from './components/Basket/CheckoutPage';
 import OrderConfirmation from './components/Basket/OrderConfirmation';
-import AdminOrderDetails from './components/Admin/OrderDetailsPage/OrderDetailsPage';
-import AdminOrders from './pages/adminPages/orders/orders';
+
 const App: FC = () => {
   const [favoritedCount, setFavoritedCount] = useState(0);
   const { width } = useWindowSize(); // Get window width
@@ -50,8 +49,6 @@ const App: FC = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/orders/:orderId" element={<AdminOrderDetails />} />
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />
