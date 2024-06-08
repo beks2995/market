@@ -5,7 +5,7 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
-import ProductPage from './pages/Product/ProductPage';
+import ProductPage from './pages/product/ProductPage';
 import UslovieService from './pages/UslovieService/UslovieService'
 import Contacts from './pages/Contacts/Contacts'
 import Footer from './components/Footer/Footer'
