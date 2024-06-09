@@ -41,7 +41,6 @@ const App: FC = () => {
           <Route path='/contacts' element={<Contacts />}></Route>
           <Route path='/wishlist' element={<div>Wishlist</div>}></Route>
           <Route path="/cart" element={<div>Cart Page</div>} />
-          <Route path="/profile" element={<>Profile</>} />
           <Route path="/product/:id" element={<ProductPage/>} />
         </Routes>
         <Routes>

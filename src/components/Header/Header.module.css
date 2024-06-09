@@ -14,7 +14,6 @@
     background-color: #eaeaea;
     color: white;
     font-family: var(--font-family);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .logoAndNav {
@@ -35,7 +34,7 @@
     cursor: pointer;
 }
 
-.nav-toggle {
+.nav_toggle {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 15px;
@@ -48,27 +47,11 @@
     gap: 10px;
 }
 
-.nav-toggle:hover {
+.nav_toggle:hover {
     cursor: pointer;
 }
 
-/* .nav-menu {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-}
-
-.nav-menu.open {
-    display: list-item; 
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 15px;
-    color: #101010;
-} */
-
-.nav-menu li {
+.nav_menu li {
     padding: 10px;
 }
 
@@ -77,13 +60,11 @@
     align-items: center;
 }
 
-.profile-dropdown {
+.profile_dropdown {
     position: absolute;
     background-color: #444;
     border-radius: 0 0 30px 30px;
     padding: 15px 15px 19px 16px;
-    display: flex;
-    flex-direction: column;
     right: 5.5%;
     top: 7%;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
@@ -94,7 +75,7 @@
     gap: 9px;
 }
 
-.profile-dropdown-btn-1 {
+.profile_dropdown_btn_1 {
     background: none;
     border: none;
     font-family: var(--font-family);
@@ -103,7 +84,7 @@
     color: #101010;
 }
 
-.profile-dropdown-btn-2 {
+.profile_dropdown_btn_2 {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 15px;
@@ -111,20 +92,20 @@
     border: none;
 }
 
-.profile-dropdown-btn-1 a,
-.profile-dropdown-btn-2 a {
+.profile_dropdown_btn_1 a,
+.profile_dropdown_btn_2 a {
     text-decoration: none;
 }
 
-.profile-dropdown-btn-1 a {
+.profile_dropdown_btn_1 a {
     color: #101010;
 }
 
-.profile-dropdown-btn-2 a {
+.profile_dropdown_btn_2 a {
     color: #ffa542;
 }
 
-.profile-dropdown-btn-3 {
+.profile_dropdown_btn_3 {
     background: none;
     border: none;
     font-family: var(--font-family);
@@ -133,7 +114,7 @@
     color: #101010;
 }
 
-.profile-dropdown-btn-3:hover {
+.profile_dropdown_btn_3:hover {
     cursor: pointer;
 }
 
@@ -191,16 +172,12 @@
     color: #101010;
 }
 
-.burger_menu {
-    padding-right: 20px;
-}
-
 .menu {
     position: fixed;
     /* Position the menu relative to the viewport */
-    top: 4%;
+    top: 9%;
     /* Adjust the top position as needed */
-    right: 20%;
+    right: 5%;
     /* Position the menu to the top right corner */
     z-index: 999;
     /* Ensure the menu appears above other content */
@@ -254,7 +231,7 @@
     gap: 10px;
 }
 
-.menu_ul_lang p {
+.menu_ul_lang a {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 15px;

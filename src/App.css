@@ -18,6 +18,9 @@
 
 body {
   background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App {
@@ -27,7 +30,8 @@ body {
 }
 
 .Content{
-  flex: 1;
+  flex-grow: 1;
+  margin: auto 0;
 }
 
 .text-stroke-1 {
