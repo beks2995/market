@@ -25,18 +25,18 @@ const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
         });
         return () => unsubscribe()
     }, [])
-    const clickHandle = (el: Idata) => {
-        el.isFavorited = !el.isFavorited
-        setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if (el.isFavorited) {
-            setInFavorited((prev: Idata[]) => [...prev, el])
-        }
-        
-    } 
+
     return (
         <section className="wirelessHeadphones">
             <p className="title">Безпроводные</p>
-            <Card data={wirelessHeadphones} clickHandle={clickHandle} inFavorited={inFavorited}/>
+            <div className="cards">
+                {
+                    wirelessHeadphones && wirelessHeadphones.map((el, indx) => {
+                        return <Card el={el} indx={indx} setInFavorited={setInFavorited} inFavorited={inFavorited}/>
+
+                    })
+                }
+            </div>
 
         </section>
     )

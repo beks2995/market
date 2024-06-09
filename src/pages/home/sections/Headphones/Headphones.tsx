@@ -26,19 +26,17 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
     console.log(headphones);
     
 
-    const clickHandle = (el: Idata) => {
-        el.isFavorited = !el.isFavorited
-        setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if (el.isFavorited) {
-            setInFavorited((prev: Idata[]) => [...prev, el])
-        }
-
-        
-    } 
+ 
     return (
         <section className="headphones">
             <p className="title">Наушники</p>
-            <Card data={headphones} clickHandle={clickHandle} inFavorited={inFavorited}/>
+            <div className="cards">
+                {
+                    headphones && headphones.map((el, indx) => {
+                        return <Card el={el} indx={indx} setInFavorited={setInFavorited} inFavorited={inFavorited} />
+                    })
+                }
+            </div>
 
         </section>
     )

@@ -11,19 +11,25 @@ const Favorites:FC = () => {
     }, [])
     console.log(favoriteProducts);
     
-    const clickHandle = (el: Idata) => {
-        el.isFavorited = !el.isFavorited
-        setFavoriteProducts((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if(el.isFavorited){
-            setFavoriteProducts((prev: Idata[]) => [...prev, el])
-        }
+    // const clickHandle = (el: Idata) => {
+    //     el.isFavorited = !el.isFavorited
+    //     setFavoriteProducts((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
+    //     if(el.isFavorited){
+    //         setFavoriteProducts((prev: Idata[]) => [...prev, el])
+    //     }
         
-    } 
+    // } 
 
     return (
         <div className="favorite_products">
             <h2 className="favorite_products_title">Избранные</h2>
-            <Card data={favoriteProducts} clickHandle={clickHandle} inFavorited={favoriteProducts}/>
+            <div className="cards">
+                {
+                    favoriteProducts && favoriteProducts.map((el, indx) => {
+                        return <Card el={el} indx={indx} setInFavorited={setFavoriteProducts} inFavorited={favoriteProducts}/>
+                    })
+                }
+            </div>
         </div>
     )
 }
