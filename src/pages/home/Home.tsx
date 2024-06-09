@@ -1,7 +1,5 @@
-
 import { FC, useState, SetStateAction, useEffect } from "react";
-import './Homepage.css'
-
+import './Home.css'
 import Top from "./sections/top";
 import Headphones from "../../pages/home/sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
@@ -27,14 +25,5 @@ const Home: FC  = () => {
 
 }
 
-const Home: FC<HomeProps> = ({ setFavoritedCount }) => {
-  return (
-    <main className="main">
-      <Top />
-      <Headphones setFavoritedCount={setFavoritedCount} />
-      <WirelessHP setFavoritedCount={setFavoritedCount}/>
-    </main>
-  );
-}
 
 export default Home;

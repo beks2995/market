@@ -5,8 +5,8 @@ import WirelessHP from "../../home/sections/WirelessHeadphones"
     const products = () => {
         return(
             <div>
-                <Headphones/>
-                <WirelessHP/>
+                {/* <Headphones/> */}
+                {/* <WirelessHP/> */}
             </div>  
         )
     }

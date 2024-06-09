@@ -6,7 +6,7 @@ interface DescriptionInputProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const DescriptionInput: React.FC<DescriptionInputProps> = ({ value, onChange }) => {
+const DescriptionInput = ({ value, onChange }:DescriptionInputProps) => {
   return (
     <textarea
       className='description'

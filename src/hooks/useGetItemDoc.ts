@@ -2,17 +2,21 @@ import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firestore";
 import { Item, Category } from "../types/types";
+import { changeLoadingState } from "../store/reducers/IsLoading";
+import { useDispatch } from "react-redux";
 
 const useGetItemDoc = (collectionName: string, documentId: string) => {
   const [documentData, setDocumentData] = useState<Item | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
+        dispatch(changeLoadingState(true))
         const docRef = doc(db, collectionName, documentId);
         const docSnap = await getDoc(docRef);
 
@@ -46,6 +50,7 @@ const useGetItemDoc = (collectionName: string, documentId: string) => {
         console.log(error);
       } finally {
         setIsLoading(false);
+        dispatch(changeLoadingState(false))
       }
     };
 

@@ -1,4 +1,5 @@
 export interface Idata {
+    id?: string;
     category: string;
     description: string;
     defaultRating: string;
