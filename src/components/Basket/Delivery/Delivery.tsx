@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react'
 
 interface DeliveryProps {
     onDeliveryChange: (option: string) => void
@@ -11,7 +11,7 @@ const Delivery: React.FC<DeliveryProps> = ({ onDeliveryChange }) => {
     const handleDeliveryChange = (option: string) => {
         setDeliveryOption(option);
         onDeliveryChange(option);
-    };
+    }
 
     useEffect(() => {
         handleDeliveryChange('courier')

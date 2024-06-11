@@ -10,9 +10,9 @@ import UslovieService from './pages/UslovieService/UslovieService';
 import Contacts from './pages/Contacts/Contacts';
 import Footer from './components/Footer/Footer';
 import AdminPanel from './pages/adminPanel/adminPanel';
-import Cart from './components/Basket/Cart';
-import Checkout from './components/Basket/CheckoutPage';
-import OrderConfirmation from './components/Basket/OrderConfirmation';
+import Cart from './components/Basket/Cart/Cart';
+import Checkout from './components/Basket/CheckoutPage/CheckoutPage';
+import OrderConfirmation from './components/Basket/OrderConfirmation/OrderConfirmation';
 
 const App: FC = () => {
   const [favoritedCount, setFavoritedCount] = useState(0);

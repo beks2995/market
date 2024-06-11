@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { db } from '../../firebase/firestore';
+import { db } from '../../../firebase/firestore';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Checkout: React.FC = () => {
@@ -17,7 +17,7 @@ const Checkout: React.FC = () => {
         house: '',
         apartment: '',
         entrance: '',
-    });
+    })
     const [showQRCode, setShowQRCode] = useState<boolean>(false)
     const [orderId, setOrderId] = useState<string>('')
     const [orderNumber, setOrderNumber] = useState<string>('')
@@ -185,7 +185,7 @@ const Checkout: React.FC = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Checkout;

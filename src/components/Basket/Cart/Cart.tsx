@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../../firebase/firestore';
+import { db } from '../../../firebase/firestore';
 import { doc, getDoc, updateDoc, DocumentReference } from 'firebase/firestore';
-import useAuth from '../../hooks/useAuth';
-import QuantityControl from './QuantityControl';
-import Delivery from './Delivery';
+import useAuth from '../../../hooks/useAuth';
+import QuantityControl from '../QuantityControl/QuantityControl';
+import Delivery from '../Delivery/Delivery';
+import './Cart.css'
+import { Link } from 'react-router-dom';
+
 
 export interface CartItem {
     itemId: DocumentReference;
@@ -120,11 +123,11 @@ const Cart: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2>Корзина</h2>
+        <div className='cart__section'>
             {itemsData.length > 0 ? (
                 itemsData.map((item, index) => (
                     <div key={index} className="flex justify-between p-4 border-b">
+                        <h2>Корзина</h2>
                         <div>
                             <img src={item.images} alt={item.name} style={{ width: '100px', height: '100px' }} />
                             <h3>{item.name}</h3>
@@ -146,7 +149,12 @@ const Cart: React.FC = () => {
                     </div>
                 ))
             ) : (
-                <p>Ваша корзина пуста</p>
+                <div className='cart__empty-section'>
+                    <img className='cart__empty-img' src="https://i.postimg.cc/4ysxPwt8/Illustration.png" alt="img" />
+                    <h2 className='cart__empty-title'>Корзина пуста</h2>
+                    <span className='cart__empty-span'>Но это никогда не поздно исправить :)</span>
+                    <Link to="/" className="cart__home-link">В каталог товаров</Link>
+                </div>
             )}
             {itemsData.length > 0 && (
                 <>

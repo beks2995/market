@@ -11,7 +11,7 @@
       import { Item, Review } from "../../types/types";
       import useGetReviews from "../../hooks/useGetReviews";
       import useAuth from "../../hooks/useAuth";
-      import AddToCartButton from "../../components/Basket/AddToCartButton";
+      import AddToCartButton from "../../components/Basket/AddToCartButton/AddToCartButton";
 
       export default function ProductPage() {
         const { id } = useParams();

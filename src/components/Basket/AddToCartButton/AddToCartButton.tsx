@@ -1,15 +1,15 @@
     import React from 'react';
     import { ShoppingCartIcon } from '@heroicons/react/24/outline';
-    import { db } from '../../firebase/firestore';
+    import { db } from '../../../firebase/firestore';
     import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
-    import useAuth from '../../hooks/useAuth';
+    import useAuth from '../../../hooks/useAuth';
 
     interface AddToCartButtonProps {
         itemId: string;
     }
 
     const AddToCartButton: React.FC<AddToCartButtonProps> = ({ itemId }) => {
-        const user = useAuth();
+        const user = useAuth()
 
         const handleAddToCart = async () => {
             if (!user) {
@@ -30,19 +30,19 @@
                 });
                 console.log('Товар добавлен в корзину');
             } catch (error) {
-                console.error('Ошибка при добавлении товара в корзину: ', error);
+                console.error('Ошибка при добавлении товара в корзину: ', error)
             }
         };
 
         return (
             <button
-                className="flex items-center px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
-                onClick={handleAddToCart}
+                className="flex items-center pt-4 pb-4 px-4 text-white bg-black rounded-xl   hover:bg-gray-800"
+                onClick={handleAddToCart}   
             >
                 <ShoppingCartIcon className="h-6 mr-2" />
                 <span>Добавить в корзину</span>
             </button>
-        );
-    };
+        )
+    }
 
-    export default AddToCartButton;
+    export default AddToCartButton
