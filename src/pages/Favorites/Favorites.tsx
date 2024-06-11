@@ -34,7 +34,7 @@ const Favorites:FC = () => {
             {isLoading ? <h2 className="favorite_products_title">Избранные</h2> : 'loading' }
             <div className="cards">
                 {
-                    favoriteProducts.length > 0
+                    favoriteProducts && favoriteProducts.length > 0
                     ? 
                     favoriteProducts && favoriteProducts.map((el, indx) => {
                         return <Card el={el} indx={indx} setInFavorited={setFavoriteProducts} inFavorited={favoriteProducts}/>

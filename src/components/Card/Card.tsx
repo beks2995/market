@@ -3,6 +3,7 @@ import { Idata } from "../../pages/home/interfaces";
 import './Card.css'
 import Info from "../Card/info";
 import { Link } from "react-router-dom";
+import { log } from "console";
 interface IProps {
     el: Idata;
     inFavorited: any | Array<Idata> 
@@ -15,7 +16,9 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
 
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
-        setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
+        setInFavorited((prev: Idata[]) => {
+            return prev.filter(el => el.isFavorited ? el : '')
+        })
         if (el.isFavorited) {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }

@@ -9,7 +9,12 @@ import { Idata } from "./interfaces";
 const Home: FC  = () => {
     const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
     useEffect(() => {
-        setInFavorited(JSON.parse(localStorage.getItem('inFavorited') as any))
+        if(JSON.parse(localStorage.getItem('inFavorited') as any) === null){
+            setInFavorited([])
+        } else {
+            setInFavorited(JSON.parse(localStorage.getItem('inFavorited') as any))
+        }
+        
     }, [])
 
     useEffect(() => {
