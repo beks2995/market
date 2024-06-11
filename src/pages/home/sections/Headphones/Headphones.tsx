@@ -1,10 +1,11 @@
 import { FC, useState, useEffect, SetStateAction, Dispatch } from "react";
 import { Idata } from "../../interfaces";
 import { db } from "../../../../firebase/firestore";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import Card from "../../../../components/Card";
 import './Headphones.css'
+import { changeLoadingState } from "../../../../store/reducers/IsLoading";
 interface Istates {
     setInFavorited: Dispatch<SetStateAction<Array<Idata>>>
     inFavorited: SetStateAction<Idata[]>
@@ -13,6 +14,7 @@ interface Istates {
 const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
     const [headphones, setHeadphones] = useState<Array<Idata>>([])
     const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
+    const dispatch = useDispatch()
     useEffect (() => {
         const q = query(collection(db, "items"));
 
@@ -26,12 +28,18 @@ const Headphones: FC<Istates> = ({setInFavorited, inFavorited}) => {
         return () => unsubscribe()
     }, []) 
     console.log(headphones);
+    useEffect(() => {
+        dispatch(changeLoadingState(true))
+    }, [headphones])
+    useEffect(() => {
+        dispatch(changeLoadingState(false))
+    }, [])
     
 
  
     return (
         <section className="headphones">
-            {isLoading ? 'Loading' : <p className="title">Наушники</p>}
+            {isLoading ? <p className="title">Наушники</p> : ''}
             <div className="cards">
                 {
                     headphones && headphones.map((el, indx) => {
