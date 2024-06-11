@@ -30,6 +30,10 @@ const App: FC = () => {
       };
     }
   });
+  useEffect(() => {
+    setFavoritedCount(JSON.parse(localStorage.getItem('inFavorited') as any) !== null ? JSON.parse(localStorage.getItem('inFavorited') as any).length : '')
+    
+}, [favoritedCount])
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import NavigationMenu from './NavigationMenu';
@@ -40,6 +40,8 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+
 
     return (
         <header className={styles.header}>
