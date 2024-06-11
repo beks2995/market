@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Idata } from "../home/interfaces";
 import Card from "../../components/Card";
+import { useSelector } from "react-redux";
 import './Favorites.css'
 
 const Favorites:FC = () => {
@@ -9,8 +10,8 @@ const Favorites:FC = () => {
         setFavoriteProducts(JSON.parse(localStorage.getItem('inFavorited') as any));
         
     }, [])
-    console.log(favoriteProducts);
-    
+    // console.log(favoriteProducts);
+    const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
     // const clickHandle = (el: Idata) => {
     //     el.isFavorited = !el.isFavorited
     //     setFavoriteProducts((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
@@ -22,7 +23,7 @@ const Favorites:FC = () => {
 
     return (
         <div className="favorite_products">
-            <h2 className="favorite_products_title">Избранные</h2>
+            {isLoading ? 'loading' : <h2 className="favorite_products_title">Избранные</h2> }
             <div className="cards">
                 {
                     favoriteProducts && favoriteProducts.map((el, indx) => {

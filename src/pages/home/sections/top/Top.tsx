@@ -3,7 +3,7 @@ import './Top.css'
 
 const Top: React.FC = () => {
     return (
-        <section>
+        <section >
             <div className="top">
                 <div className="top__text">
                     <div className="top__text_title">
