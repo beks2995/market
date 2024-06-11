@@ -19,8 +19,6 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
         if (el.isFavorited) {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }
-
-        
     }
     
     return (
