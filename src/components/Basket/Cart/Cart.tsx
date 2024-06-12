@@ -125,29 +125,50 @@ const Cart: React.FC = () => {
     return (
         <div className='cart__section'>
             {itemsData.length > 0 ? (
-                itemsData.map((item, index) => (
-                    <div key={index} className="flex justify-between p-4 border-b">
-                        <h2>Корзина</h2>
-                        <div>
-                            <img src={item.images} alt={item.name} style={{ width: '100px', height: '100px' }} />
-                            <h3>{item.name}</h3>
-                            <p>{item.price} сом</p>
-                            <p>Количество: {
-                                <QuantityControl
-                                    itemId={item.id}
-                                    quantity={cartItems.find(cartItem => cartItem.itemId.id === item.id)?.quantity ?? 0}
-                                    onQuantityChange={handleQuantityChange}
-                                />
-                            }</p>
+                <>
+                    <div className="cart__items-and-delivery">
+                        <h2 className='cart__title'>Корзина</h2>
+                        {itemsData.map((item, index) => (
+                            <div className="cart__product-blok">
+                                <div key={index} className="cart__product">
+                                    <div className='cart__product-view'>
+                                        <img src={item.images} alt={item.name} style={{ width: '146px', height: '136px' }} />
+                                        <p>{
+                                            <QuantityControl
+                                                itemId={item.id}
+                                                quantity={cartItems.find(cartItem => cartItem.itemId.id === item.id)?.quantity ?? 0}
+                                                onQuantityChange={handleQuantityChange}
+                                            />
+                                        }</p>
+                                    </div>
+                                    <div className="cart__items-info">
+                                        <h3 className='cart__item-name'>{item.name}</h3>
+                                        <p className='cart__item-price'>{item.price} сом</p>
+                                    </div>
+                                </div>
+                                <div className="cart__delete-cost">
+                                    <button
+                                        className="text-red-500"
+                                        onClick={() => handleRemoveFromCart(item.id)}
+                                    >
+                                        <img className='cart__delete-img' src="https://i.postimg.cc/t4MLSsRK/Vector-2.png" alt="delete" />
+                                    </button>
+                                    <p className='cart__item-price-cost'>{item.price} сом</p>
+                                </div>
+                            </div>
+                        ))}
+                        <Delivery onDeliveryChange={handleDeliveryChange} />
+                    </div>
+                    <div className="cart__total">
+                        <div className="cart__total-full">
+                            <span className='cart__total-title'>ИТОГО</span>
+                            <span className='cart__total-sum'>{total + 499} сом</span>
                         </div>
-                        <button
-                            className="text-red-500"
-                            onClick={() => handleRemoveFromCart(item.id)}
-                        >
-                            Удалить
+                        <button className="cart__total-rout" onClick={handleCheckout}>
+                            Перейти к оформлению
                         </button>
                     </div>
-                ))
+                </>
             ) : (
                 <div className='cart__empty-section'>
                     <img className='cart__empty-img' src="https://i.postimg.cc/4ysxPwt8/Illustration.png" alt="img" />
@@ -156,20 +177,9 @@ const Cart: React.FC = () => {
                     <Link to="/" className="cart__home-link">В каталог товаров</Link>
                 </div>
             )}
-            {itemsData.length > 0 && (
-                <>
-                    <Delivery onDeliveryChange={handleDeliveryChange} />
-                    <div className="flex justify-between p-4 mt-4 ">
-                        <span>ИТОГО</span>
-                        <span>{total + 499} сом</span>
-                    </div>
-                    <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={handleCheckout}>
-                        Перейти к оформлению
-                    </button>
-                </>
-            )}
         </div>
     );
+
 };
 
 export default Cart;

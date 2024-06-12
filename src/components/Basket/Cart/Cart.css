@@ -39,3 +39,111 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
     background: rgb(16, 16, 16);
 }
+
+.cart__title {
+    color: rgb(28, 28, 39);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 29px;
+}
+
+.cart__product {
+    display: flex;
+}
+
+.cart__item-name {
+    color: rgb(28, 28, 39);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.cart__item-price {
+    color: rgb(170, 170, 170);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cart__item-price-cost {
+    color: rgb(170, 170, 170);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.cart__product-view {
+    padding-top: 18px;
+    padding-left: 18px;
+    padding-bottom: 17px;
+}
+
+.cart__items-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart__product-blok {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    display: flex;
+    width: 633px;
+    height: 218px;
+    justify-content: space-between;
+}
+
+.cart__delete-cost {
+    padding-right: 28px;
+    padding-top: 18px;
+    padding-bottom: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cart__delete-img {
+    text-align: right;
+}
+
+.cart__total {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+}
+
+.cart__total-title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cart__total-sum {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cart__total-rout {
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    background: rgb(16, 16, 16);
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    padding: 22px 12px 22px 12px;
+    width: 348.98px;
+    height: 65px;
+}
