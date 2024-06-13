@@ -83,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
 
                     <div className={styles.icons}>
                         <div className='iconPositionDiv'>
-                            <Link to="/wishlist"
+                            <Link to="/favorites"
                                 className="wishlist"
 
 
