@@ -1,4 +1,4 @@
-import { Dispatch, FC, MouseEvent, SetStateAction } from "react";
+import { Dispatch, FC, MouseEvent, SetStateAction, useEffect } from "react";
 import { Idata } from "../../pages/home/interfaces";
 import './Card.css'
 import Info from "../Card/info";
@@ -16,6 +16,9 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
 
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
+        // if(!el.isFavorited){
+        //     return {...el, isFavorited: !el.isFavorited}
+        // }
         setInFavorited((prev: Idata[]) => {
             return prev.filter(el => el.isFavorited ? el : '')
         })
@@ -23,6 +26,9 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
             setInFavorited((prev: Idata[]) => [...prev, el])
         }
     }
+    useEffect(() => {
+        localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
+    }, [inFavorited])
     
     return (
         <div key={indx} className="card">
