@@ -1,0 +1,17 @@
+.orders-summary {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.orders__number {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import './OrderConfirmation.css'
 
 const OrderConfirmation: React.FC = () => {
     const location = useLocation()
@@ -10,9 +11,9 @@ const OrderConfirmation: React.FC = () => {
     }
 
     return (
-        <div className="order-confirmation">
+        <div className="order-confirmation-finish">
             <div className="confirmation-message">
-                <p>Номер вашего заказа №{orderNumber}, с Вами свяжется наш менеджер.</p>
+                <p className='confirmation-text'>Номер вашего заказа №{orderNumber}, с Вами свяжется наш менеджер.</p>
             </div>
         </div>
     )

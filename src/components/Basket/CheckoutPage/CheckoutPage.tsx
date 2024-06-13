@@ -74,26 +74,8 @@ const Checkout: React.FC = () => {
 
     const finalTotalCost = totalCost + (deliveryOption === 'courier' ? 499 : 0)
 
-    const validateForm = () => {
-        const newErrors: any = {}
-
-        if (!deliveryAddress.city) newErrors.city = 'поле "город" не заполнено'
-        if (!deliveryAddress.street) newErrors.street = 'поле "улица / Район" не заполнено'
-        if (!deliveryAddress.house) newErrors.house = 'поле "дом" не заполнено'
-        if (!deliveryAddress.apartment) newErrors.apartment = 'поле "квартира" не заполнено'
-        if (!deliveryAddress.entrance) newErrors.entrance = 'поле "подезд" не заполнено'
-        if (!customerPhone) newErrors.customerPhone = 'поле "номер получателя" не заполнено'
-
-        setErrors(newErrors)
-
-        return Object.keys(newErrors).length === 0
-    };
-
     const handleOrderSubmit = async () => {
-        if (!validateForm()) {
-            return
-        }
-
+  
         const orderData = {
             cartItems: itemsData.map(item => ({
                 itemId: item.id,
@@ -121,8 +103,8 @@ const Checkout: React.FC = () => {
 
     return (
         <div className='order'>
-            <h2 className='order__title'>Оформление заказа</h2>
             <div className='order__container'>
+            <h2 className='order__title'>Оформление заказа</h2>
                 <div className='order__decoration'>
                     <div className="order__decoration-container">
                         <div className="order__decoration-block">
@@ -158,7 +140,6 @@ const Checkout: React.FC = () => {
                                         <span className='order__decoration-span'>
                                             <img src="https://i.postimg.cc/mDfGf2bS/Vector-4.png" alt="arrow" className="order__decoration-img" />
                                         </span>
-                                        {errors.street && <p style={{ color: 'red' }}>{errors.street}</p>}
                                     </div>
                                 </div>
                                 <div className="order__decoration-home-block">
@@ -174,7 +155,6 @@ const Checkout: React.FC = () => {
                                             <span className="order__decoration-home-span">
                                                 <img src="https://i.postimg.cc/mDfGf2bS/Vector-4.png" alt="arrow" className="order__decoration-home-img" />
                                             </span>
-                                            {errors.house && <p style={{ color: 'red' }}>{errors.house}</p>}
                                         </div>
                                         <div className="order__decoration-home-input">
                                             <input
@@ -187,7 +167,6 @@ const Checkout: React.FC = () => {
                                             <span className="order__decoration-home-span">
                                                 <img src="https://i.postimg.cc/mDfGf2bS/Vector-4.png" alt="arrow" className="order__decoration-home-img" />
                                             </span>
-                                            {errors.apartment && <p style={{ color: 'red' }}>{errors.apartment}</p>}
                                         </div>
                                     </div>
                                     <div className="order__decoration-home-input">
@@ -201,8 +180,6 @@ const Checkout: React.FC = () => {
                                         <span className="order__decoration-home-span-p">
                                             <img src="https://i.postimg.cc/mDfGf2bS/Vector-4.png" alt="arrow" className="order__decoration-home-img" />
                                         </span>
-                                        {errors.entrance && <p style={{ color: 'red' }}>{errors.entrance}</p>}
-
                                     </div>
                                 </div>
                             </div>
@@ -224,34 +201,58 @@ const Checkout: React.FC = () => {
                                     <p className='order__info-your-delivery'>К оплате<span> {finalTotalCost} сом</span></p>
                                 </div>
                             </div>
-                            <h3>Способ оплаты</h3>
-                            <div>
-                                <button
-                                    className="mt-4 px-4 py-2 "
-                                    onClick={() => setShowQRCode(!showQRCode)}
-                                >
-                                    Оплата на mBank
-                                </button>
-                                {showQRCode && (
-                                    <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                                        <h3>Отсканируйте QR код для оплаты</h3>
-                                        <img src="https://i.postimg.cc/LskL8FFD/qr-code.gif" alt="QR Code" />
+                            <div className="order__payment">
+                                <div className="order__payment-total">
+                                    <div className="order__payment-container">
+                                        <h3 className='order__payment-title'>Способ оплаты</h3>
+                                        <div className='order__payment-block'>
+                                            <button
+                                                className="order__payment-btn"
+                                                onClick={() => setShowQRCode(!showQRCode)}
+                                            >
+                                                <img src="https://i.postimg.cc/Gtj01vzc/Vector-5.png" alt="visa" />
+                                                Оплата на mBank
+                                            </button>
+                                            <img src="https://i.postimg.cc/sg0dVyyq/Vector-3.png" alt="" />
+                                        </div>
                                     </div>
-                                )}
+                                    {showQRCode && (
+                                        <div className='order__payment-qr'>
+                                            <img src="https://i.postimg.cc/LskL8FFD/qr-code.gif" alt="QR Code" />
+                                        </div>
+                                    )}
+                                    <div className="order__payment-block">
+                                        <button
+                                            className="order__payment-btn-promo"
+                                        >
+                                            <img src="https://i.postimg.cc/1Xbv2X19/Vector-6.png" alt="pazle" />
+                                            Есть промокод?
+                                        </button>
+                                        <img src="https://i.postimg.cc/YCRsqp1x/Vector-7.png" alt="arrow" />
+                                    </div>
+                                </div>
                             </div>
-                            <input
-                                type="text"
-                                placeholder="Номер получателя"
-                                value={customerPhone}
-                                onChange={e => setCustomerPhone(e.target.value)}
-                            />
-                            {errors.customerPhone && <p style={{ color: 'red' }}>{errors.customerPhone}</p>}
+                            <div className="order__number-comfirm">
+                                <h3 className="order__number-title">Номер получателя</h3>
+                                <div className="order__number">
+                                    <input
+                                        className='order__number-input'
+                                        type="text"
+                                        placeholder="+996 _ _ _ _"
+                                        value={customerPhone}
+                                        onChange={e => setCustomerPhone(e.target.value)}
+                                    />
+                                    <span className='order__number-span'>
+                                        <img src="https://i.postimg.cc/mDfGf2bS/Vector-4.png" alt="arrow" className="order__decoration-img" />
+                                    </span>
+                                </div>
+                            </div>
                             <button
-                                className="mt-4 px-4 py-2  "
-                                onClick={handleOrderSubmit}
-                            >
-                                Закончить оформление
-                            </button>
+                                    className="order__finish"
+                                    onClick={handleOrderSubmit}
+                                >
+                                    Закончить оформление
+                                </button>
                         </div>
                     </div>
                 </div>
