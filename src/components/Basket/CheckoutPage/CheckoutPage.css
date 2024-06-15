@@ -1,0 +1,321 @@
+.order__title {
+    color: rgb(28, 28, 39);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 12px;
+}
+
+.order__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.order__title-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order__decoration-title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.order__delivery {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.order__decoration-map {
+    height: 146px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.order__decoration-description {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    gap: 11px;
+    margin-bottom: 18px;
+}
+
+.order__decoration-input {
+    position: relative;
+    display: inline-block;
+    width: 234px;
+    margin-bottom: 10px;
+}
+
+.order__decoration-city {
+    border-radius: 15px;
+    background: rgb(214, 214, 214);
+    width: 369px;
+    height: 45px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.order__decoration-span {
+    position: absolute;
+    top: 50%;
+    right: -115px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.order__decoration-container {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+}
+
+
+.order__decoration-home-input {
+    position: relative;
+    display: inline-block;
+    width: 234px;
+    margin-bottom: 10px;
+}
+
+.order__decoration-home {
+    border-radius: 15px;
+    background: rgb(214, 214, 214);
+    width: 164px;
+    height: 45px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.order__decoration-home-span {
+    position: absolute;
+    top: 50%;
+    right: 80px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.order__decoration {
+    display: flex;
+    gap: 30px;
+}
+
+.order__decoration-home-block {
+    display: flex;
+    gap: 40px;
+}
+
+.order__decoration-home-block-first {
+    width: 164px;
+}
+
+.order__decoration-home-span-p {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    transform: translateY(-36px);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.order__decoration-block {
+    width: 430px;
+    padding: 23px 31px 32px 38px;
+}
+
+.order__info-your-product {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+}
+
+.order__info-your {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(8, 8, 8, 0.1);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+    padding-right: 12px;
+    padding-left: 20px;
+    padding-bottom: 13px;
+}
+
+.order__info-your-title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+.order__info-your-text-block {
+    display: flex;
+    gap: 14px;
+}
+
+.order__info-your-total {
+    margin-left: 29px;
+    row-gap: 12px;
+    display: flex;
+    flex-direction: column;
+    ;
+}
+
+.order__info-your-delivery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order__payment-title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 17px;
+}
+
+.order__payment-btn {
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    gap: 8px;
+}
+
+.order__payment-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order__payment {
+    border-radius: 30px;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+}
+
+.order__payment-btn-promo {
+    display: flex;
+    align-items: center;
+    color: rgb(131, 131, 131);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.order__payment-total {
+    padding: 15px;
+    margin-top: 14px;
+
+}
+
+.order__number {
+    position: relative;
+    display: inline-block;
+    width: 234px;
+    margin-bottom: 10px;
+}
+
+.order__number-input {
+    border-radius: 15px;
+    background: rgb(214, 214, 214);
+    width: 418px;
+    height: 45px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    color: rgb(142, 142, 142);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.order__number-span {
+    position: absolute;
+    top: 50%;
+    right: -165px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.order__number-comfirm {
+    border-radius: 30px;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    padding: 15px 23px 10px 13px;
+    margin-top: 20px;
+}
+
+.order__number-title {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.order__info {
+    width: 441px;
+}
+
+.order__finish {
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(67, 216, 84, 0.25);
+    background: rgb(16, 16, 16);
+    padding-top: 13px;
+    padding-bottom: 14px;
+    width: 100%;
+    margin-top: 29px;
+}
+
+.order{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+

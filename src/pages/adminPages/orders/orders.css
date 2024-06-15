@@ -1,0 +1,44 @@
+.orders-summary {
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 500px;
+}
+
+.orders-summary.viewed {
+    background-color: #f0f0f0;
+}
+
+.orders-summary:hover {
+    background-color: #f9f9f9;
+}
+
+.orders__number {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.orders__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.orders__actions button {
+    padding: 5px 10px; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    background: rgb(16, 16, 16);
+}

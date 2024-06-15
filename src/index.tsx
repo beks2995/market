@@ -13,5 +13,4 @@ ReactDOM.render(
     </Router>
   </Provider>
   ,
-  document.getElementById("root") // Make sure there's a corresponding div with id="root" in your HTML
-);
+  document.getElementById("root") )// Make sure there's a corresponding div with id="root" in your HTML
