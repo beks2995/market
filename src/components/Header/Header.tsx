@@ -9,7 +9,7 @@ import styles from './Header.module.css';
 
 interface HeaderProps {
     favoritedCount: number;
-    isMobile:boolean;
+    isMobile: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
@@ -41,6 +41,9 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+
+    const isAdminRoute = location.pathname.startsWith('/admin');
+
     return (
         <header className={styles.header}>
             {isMobile && location.pathname !== '/' && (
@@ -53,8 +56,9 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
             )}
 
             {/* Other header content */}
-            {!isMobile &&
+            {!isAdminRoute && (
                 <>
+                    {!isMobile && (
                     <div className={styles.logoAndNav}>
                         <div className={styles.logo}><Link to='/' className='logoLink'>QPICK</Link></div>
                         <nav>
@@ -78,6 +82,7 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                             {navOpen ? <NavigationMenu isMobile={isMobile} /> : ''}
                         </nav>
                     </div>
+                   )}
 
                     <div className={styles.icons}>
                         <div className='iconPositionDiv'>
@@ -90,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                                 {favoritedCount > 0 && <span className="badge"><p>{favoritedCount}</p></span>}
                             </Link>
                         </div>
-
+                    
                         <div className='iconPositionDiv'>
                             <Link to="/cart"
                                 className="cart"
@@ -101,6 +106,7 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                                 {cartCount > 0 && <span className="badge">{cartCount}</span>}
                             </Link>
                         </div>
+            
 
                         <div className='iconPositionDiv'>
                             <Link to="/profile"
@@ -126,7 +132,8 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                         )}
 
                     </div>
-                </>}
+                    
+                </>)}
             {isMobile &&
                 <>
                     <div className={styles.burger_menu} onClick={toggleMenu}>
@@ -156,9 +163,9 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
 
                                         }
                                         {/* &#9776; Menu icon */}
-                                        
+
                                     </button>
-                                    {navOpen ? <NavigationMenu isMobile={isMobile}/> : ''}
+                                    {navOpen ? <NavigationMenu isMobile={isMobile} /> : ''}
                                 </li>
                                 <li className={styles.menu_ul_wishlist}>
                                     <Link to='/wishlist'>
@@ -216,7 +223,8 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
 
                     }
                 </>
-            }
+            }   
+            
         </header>
     );
 };

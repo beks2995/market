@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from '../../../firebase/firestore';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import './CheckoutPage.css'
+import './CheckoutPage.css';
 
 const Checkout: React.FC = () => {
     const mapRef = useRef<HTMLDivElement | null>(null);
@@ -10,9 +10,9 @@ const Checkout: React.FC = () => {
     const navigate = useNavigate();
     const { cartItems, deliveryOption } = location.state || {}
 
-    const [itemsData, setItemsData] = useState<any[]>([])
-    const [totalCost, setTotalCost] = useState<number>(0)
-    const [customerPhone, setCustomerPhone] = useState<string>('')
+    const [itemsData, setItemsData] = useState<any[]>([]);
+    const [totalCost, setTotalCost] = useState<number>(0);
+    const [customerPhone, setCustomerPhone] = useState<string>('');
     const [deliveryAddress, setDeliveryAddress] = useState({
         city: '',
         street: '',
@@ -50,12 +50,12 @@ const Checkout: React.FC = () => {
             const validItems = items.filter(item => item !== null) as any[]
             setItemsData(validItems)
 
-            const calculatedTotalCost = validItems.reduce((acc, item) => acc + item.totalCost, 0)
-            setTotalCost(calculatedTotalCost)
+            const calculatedTotalCost = validItems.reduce((acc, item) => acc + item.totalCost, 0);
+            setTotalCost(calculatedTotalCost);
         };
 
-        fetchItemsData()
-    }, [cartItems])
+        fetchItemsData();
+    }, [cartItems]);
 
     useEffect(() => {
         if (mapRef.current && window.google) {
@@ -75,7 +75,11 @@ const Checkout: React.FC = () => {
     const finalTotalCost = totalCost + (deliveryOption === 'courier' ? 499 : 0)
 
     const handleOrderSubmit = async () => {
-  
+        if (!customerPhone || !deliveryAddress.city || !deliveryAddress.street || !deliveryAddress.house) {
+            alert('Все поля должны быть заполнены!')
+            return
+        }
+
         const orderData = {
             cartItems: itemsData.map(item => ({
                 itemId: item.id,
@@ -87,24 +91,25 @@ const Checkout: React.FC = () => {
             totalAmount: finalTotalCost,
             customerPhone,
             deliveryAddress,
-            paymentStatus: 'pending',
+            paymentStatus: 'Оплачено',
             createdAt: new Date(),
-            orderNumber
+            orderNumber,
+            viewed: false
         }
 
         try {
             await setDoc(doc(db, 'orders', orderId), orderData)
-            alert('заказ успешно создан')
+            alert('Заказ успешно создан')
             navigate('/order-confirmation', { state: { orderId, orderNumber } });
         } catch (error) {
-            console.error('ошибка при создании заказа:', error)
+            console.error('Ошибка при создании заказа:', error)
         }
     };
 
     return (
         <div className='order'>
             <div className='order__container'>
-            <h2 className='order__title'>Оформление заказа</h2>
+                <h2 className='order__title'>Оформление заказа</h2>
                 <div className='order__decoration'>
                     <div className="order__decoration-container">
                         <div className="order__decoration-block">
@@ -248,11 +253,11 @@ const Checkout: React.FC = () => {
                                 </div>
                             </div>
                             <button
-                                    className="order__finish"
-                                    onClick={handleOrderSubmit}
-                                >
-                                    Закончить оформление
-                                </button>
+                                className="order__finish"
+                                onClick={handleOrderSubmit}
+                            >
+                                Закончить оформление
+                            </button>
                         </div>
                     </div>
                 </div>
