@@ -16,9 +16,6 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
 
     const clickHandle = (el: Idata) => {
         el.isFavorited = !el.isFavorited
-        // if(!el.isFavorited){
-        //     return {...el, isFavorited: !el.isFavorited}
-        // }
         setInFavorited((prev: Idata[]) => {
             return prev.filter(el => el.isFavorited ? el : '')
         })

@@ -2,19 +2,16 @@ import { FC, useState, useEffect, SetStateAction, Dispatch } from "react";
 import { Idata } from "../../interfaces";
 import { db } from "../../../../firebase/firestore";
 import { collection, query, onSnapshot } from "firebase/firestore";
-import { useSelector, useDispatch } from "react-redux";
-import { changeLoadingState } from "../../../../store/reducers/IsLoading";
 import Card from "../../../../components/Card";
 import './WirelessHP.css'
 interface Istates {
     setInFavorited: Dispatch<SetStateAction<Array<Idata>>>;
     inFavorited: SetStateAction<Idata[]>
+    isLoading: boolean
 }
 
-const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
+const WirelessHP: FC<Istates> = ({isLoading, setInFavorited, inFavorited}) => {
     const [wirelessHeadphones, setWirelessHeadphones] = useState<Array<Idata>>([])
-    const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
-    const dispatch = useDispatch()
     useEffect (() => {
         const q = query(collection(db, "items"));
 
@@ -29,16 +26,10 @@ const WirelessHP: FC<Istates> = ({setInFavorited, inFavorited}) => {
         });
         return () => unsubscribe()
     }, [])
-    useEffect(() => {
-        dispatch(changeLoadingState(true))
-    }, [wirelessHeadphones])
-    useEffect(() => {
-        dispatch(changeLoadingState(false))
-    }, [])
 
     return (
         <section className="wirelessHeadphones">
-            {isLoading ? <p className="title">Безпроводные</p>  : ''}
+            {isLoading ? '' : <p className="title">Безпроводные</p>}
             <div className="cards">
                 {
                     wirelessHeadphones && wirelessHeadphones.map((el, indx) => {
