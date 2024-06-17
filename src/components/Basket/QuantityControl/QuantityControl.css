@@ -1,0 +1,29 @@
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.quantity-control__button {
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.quantity-control__button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.quantity-control__count {
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+}

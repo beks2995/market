@@ -1,0 +1,29 @@
+.favorite_products{
+    margin: 0px 165px;
+}
+.favorite_products_title{
+    font-weight: 600;
+    font-size: 20px;
+    color: #1c1c27;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.favorite_products_null{
+    font-weight: 600;
+    font-size: 20px;
+    color: #1c1c27;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 10%;
+    padding-left: 30%;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    width: 350px;
+    height: 407px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 15px 21px 32px 21px;
+}
