@@ -14,7 +14,6 @@ interface Istates {
 
 const Headphones: FC<Istates> = ({isLoading, setInFavorited, inFavorited}) => {
     const [headphones, setHeadphones] = useState<Array<Idata>>([])
-    const dispatch = useDispatch()
     useEffect (() => {
         const q = query(collection(db, "items"));
 

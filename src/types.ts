@@ -1,10 +1,15 @@
 export interface Device {
   name: string;
-  priceBeforeDiscount: string;
-  priceAfterDiscount: string;
-  img: string;
+  price: any;
+  priceWithDiscount: any;
+  images: string;
   description: string;
-  inFavorite: false;
-  inBasket: false;
-  defaultRating: string;
+  stock: number;
+}
+
+export interface Item {
+  id: string;
+  name: string;
+  price: number;
+ 
 }

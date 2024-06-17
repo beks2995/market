@@ -9,13 +9,25 @@ const Navigation: React.FC = () => {
     <nav className='navigation__container'>
       <ul>
         <li>
-          <NavLink to="products" className={location.pathname.endsWith("/products") ? "active-link" : ""}>Товары</NavLink>
+          <NavLink 
+            to="/admin/products" 
+            className={({ isActive }) => isActive ? "active-link" : ""}>
+            Товары
+          </NavLink>
         </li>
         <li>
-          <NavLink to="add-products" className={location.pathname.endsWith("/add-products") ? "active-link" : ""}>Добавить</NavLink>
+          <NavLink 
+            to="/admin/add-products" 
+            className={({ isActive }) => isActive ? "active-link" : ""}>
+            Добавить
+          </NavLink>
         </li>
         <li>
-          <NavLink to="orders" className={location.pathname.endsWith("/orders") ? "active-link" : ""}>Заказы</NavLink>
+          <NavLink 
+            to="/admin/orders" 
+            className={({ isActive }) => isActive || location.pathname.startsWith('/admin/orders') ? "active-link" : ""}>
+            Заказы
+          </NavLink>
         </li>
       </ul>
     </nav>

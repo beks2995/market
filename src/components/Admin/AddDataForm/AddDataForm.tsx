@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { getFirestore, collection, addDoc, setDoc, getDoc, doc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, setDoc, getDoc, doc, DocumentReference } from 'firebase/firestore'
 import { initializeApp, getApps } from 'firebase/app'
 import ImageInput from '../ImageInput/ImageInput'
 import TextInput from '../TextInput/TextInput'
@@ -20,7 +20,6 @@ const firebaseConfig = {
   appId: "1:232919272449:web:68862e13635832dabb4400"
 }
 
-// Initialize Firebase only if no apps are already initialized
 if (!getApps().length) {
   initializeApp(firebaseConfig)
 }
@@ -36,22 +35,22 @@ const categories = [
 const AddDataForm: React.FC = () => {
   const [device, setDevice] = useState<Device>({
     name: '',
-    priceBeforeDiscount: '',
-    priceAfterDiscount: '',
-    img: '',
+    price: '',
+    priceWithDiscount: '',
+    images: '',
     description: '',
-    inFavorite: false,
-    inBasket: false,
-    defaultRating: '5',
+    stock: 100,
   });
-  
-  const [categoryId, setCategoryId] = useState<string>('');
+
+  const [categoryRef, setCategoryRef] = useState<DocumentReference | null>(null);
   const [images, setImages] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     if (name === 'category') {
-      setCategoryId(value);
+      const categoryCollectionRef = collection(firestore, 'categories');
+      const categoryDocRef = doc(categoryCollectionRef, value);
+      setCategoryRef(categoryDocRef);
     } else {
       setDevice((prevState: Device) => ({
         ...prevState,
@@ -75,44 +74,38 @@ const AddDataForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const categoryCollectionRef = collection(firestore, 'categories');
-      const categoryDocRef = doc(categoryCollectionRef, categoryId);
-      const categoryDocSnapshot = await getDoc(categoryDocRef);
-      
-      if (!categoryDocSnapshot.exists()) {
-        await setDoc(categoryDocRef, { name: categoryId });
+      if (categoryRef) {
+        const categoryDocSnapshot = await getDoc(categoryRef);
+
+        if (!categoryDocSnapshot.exists()) {
+          await setDoc(categoryRef, { name: categoryRef.id });
+        }
+
+        const itemsCollectionRef = collection(firestore, 'items');
+        const newItemRef = await addDoc(itemsCollectionRef, {
+          ...device,
+          images: images,
+          categoryId: categoryRef,
+        });
+
+        setDevice({
+          name: '',
+          price: '',
+          priceWithDiscount:'',
+          images: '',
+          description: '',
+          stock: 100,
+        });
+
+        setImages([]);
+        setCategoryRef(null);
+      } else {
+        console.error("Ошибка: категория не выбрана.");
       }
-  
-      const itemsCollectionRef = collection(firestore, 'items');
-      const newItemRef = await addDoc(itemsCollectionRef, {
-        ...device,
-        img: images,
-        categoryId: `/categories/${categoryId}`,
-        inFavorite: false,
-        inBasket: false,
-      });
-    
-      // const reviewsCollectionRef = collection(firestore, `items/${newItemRef.id}/reviews`);
-      // await addDoc(reviewsCollectionRef, {}); 
-  
-      setDevice({
-        name: '',
-        priceBeforeDiscount: '',
-        priceAfterDiscount: '',
-        img: '',
-        description: '',
-        inFavorite: false,
-        inBasket: false,
-        defaultRating: '5',
-      });
-      
-      setImages([]);  
-      setCategoryId('');  
     } catch (error) {
       console.error("Ошибка при добавлении устройства: ", error);
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -124,13 +117,13 @@ const AddDataForm: React.FC = () => {
       />
       <div className="container__priceInput">
         <PriceInput
-          priceBeforeDiscount={device.priceBeforeDiscount}
-          priceAfterDiscount={device.priceAfterDiscount}
+          price={device.price}
+          priceWithDiscount={device.priceWithDiscount}
           onChange={handleChange}
         />
         <CategorySelect
           categories={categories}
-          value={categoryId}
+          value={categoryRef ? categoryRef.id : ''}
           onChange={handleChange}
         />
       </div>
