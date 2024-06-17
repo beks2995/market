@@ -14,9 +14,11 @@ import Cart from './components/Basket/Cart/Cart';
 import Checkout from './components/Basket/CheckoutPage/CheckoutPage';
 import OrderConfirmation from './components/Basket/OrderConfirmation/OrderConfirmation';
 import Favorites from './pages/Favorites';
+import { Idata } from './pages/home/interfaces';
 
 const App: FC = () => {
   const [favoritedCount, setFavoritedCount] = useState(0);
+  const [inFavorited, setInFavorited] = useState<Idata[]>([]);
   const { width } = useWindowSize(); // Get window width
   const [isMobile, setIsMobile] = useState<boolean>(width < 429);
   const location = useLocation(); // Use useLocation hook to get location object
@@ -33,18 +35,18 @@ const App: FC = () => {
   });
   useEffect(() => {
     setFavoritedCount(JSON.parse(localStorage.getItem('inFavorited') as any) !== null ? JSON.parse(localStorage.getItem('inFavorited') as any).length : '')
-  }, [favoritedCount])
+  }, [inFavorited])
 
   return (
     <div>
       <Header favoritedCount={favoritedCount} isMobile={isMobile} /> 
       <main className='Content'>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home inFavorited={inFavorited} setInFavorited={setInFavorited}/>} />
           <Route path="/about" element={<div>About Page</div>} />
           <Route path='/uslovie' element={<UslovieService />} />
           <Route path='/contacts' element={<Contacts />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Favorites inFavorited={inFavorited} setInFavorited={setInFavorited}/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path='/admin/*' element={<AdminPanel />} />
           <Route path="/cart" element={<Cart />} />

@@ -1,4 +1,4 @@
-import { FC, useState, SetStateAction, useEffect } from "react";
+import { FC, useState, SetStateAction, useEffect, Dispatch } from "react";
 import './Home.css'
 import Top from "./sections/top";
 import Headphones from "../../pages/home/sections/Headphones";
@@ -6,9 +6,12 @@ import WirelessHP from "./sections/WirelessHeadphones";
 import { Idata } from "./interfaces";
 import { useSelector, useDispatch } from "react-redux";
 import { changeLoadingState } from "../../store/reducers/IsLoading";
+interface Props {
+    setInFavorited: Dispatch<SetStateAction<Idata[]>>
+    inFavorited: Array<Idata>
+}
 
-const Home: FC  = () => {
-    const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
+const Home: FC<Props>  = ({setInFavorited, inFavorited}) => {
     const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
     const dispatch = useDispatch()
     useEffect(() => {
