@@ -1,6 +1,5 @@
 import { useState, FC } from 'react';
 import ArrowIcon from './ArrowIcon';
-import './NavigationMenu.css'
 import styles from './NavigationMenu.module.css';
 
 interface NavigationMenuProps {
@@ -18,7 +17,7 @@ const NavigationMenu: FC<NavigationMenuProps> = ({isMobile}) => {
   };
 
   return (
-    <ul className={styles.navList} style={{ position: 'static', borderRadius:"0", background:"#eaeaea", padding:"15px 24px 0px 24px", boxShadow:"0 0 0 0"}} >
+    <ul className={styles.navList} style={isMobile ? { position: 'static', borderRadius:"0", background:"#eaeaea", padding:"15px 24px 0px 24px", boxShadow:"0 0 0 0"} : {}} >
       <li onClick={() => handleToggle('Apple')} style={{justifyContent:'start', gap: '5px'}}>
         Apple <ArrowIcon isOpen={itemOpenState['Apple']} />
       </li>

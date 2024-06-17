@@ -36,23 +36,23 @@ const Login: React.FC = () => {
  
 
   return (
-    <div className='login-div'>
+    <div className='login_div'>
       <h3>Вход</h3>
-      <span className='login-div__closeButton' onClick={() => navigate("/")}>X</span>
-      <form className='login-div__form' onSubmit={handleLoginWithEmailAndPassword}>
-        <div className="login-div__form__inputs">
+      <span className='login_div__closeButton' onClick={() => navigate("/")}>X</span>
+      <form className='login_div__form' onSubmit={handleLoginWithEmailAndPassword}>
+        <div className="login_div__form__inputs">
           <label>
-            <input className='login-div__form__inp' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} required />
+            <input className='login_div__form__inp' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} required />
           </label>
           <label>
-            <input className='login-div__form__inp' type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} required />
+            <input className='login_div__form__inp' type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
         </div>
-        <button className='login-div__form__submitButton' type='submit'>Вход с Email</button>
+        <button className='login_div__form__submitButton' type='submit'>Вход с Email</button>
       </form>
-      <div className='login-div__or'>или</div>
-      <button className='login-div__form__googleButton' onClick={handleLoginWithGoogle}>Вход с Google</button>
-      <div className='login-div__signOutButton'>
+      <div className='login_div__or'>или</div>
+      <button className='login_div__form__googleButton' onClick={handleLoginWithGoogle}>Вход с Google</button>
+      <div className='login_div__signOutButton'>
       </div>
     </div>
   );

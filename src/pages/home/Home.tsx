@@ -1,6 +1,6 @@
 import { FC, useState, SetStateAction, useEffect, Dispatch } from "react";
 import './Home.css'
-import Top from "./sections/top";
+import Top from "./sections/top/index";
 import Headphones from "../../pages/home/sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
 import { Idata } from "./interfaces";
