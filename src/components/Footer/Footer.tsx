@@ -1,16 +1,17 @@
 import { FC } from 'react';
 import styles from './Footer.module.css'
-import { Link } from 'react-router-dom';
-
+import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 interface FooterProps {
   isMobile: boolean;
 }
 
 const Footer: FC<FooterProps> = ({ isMobile }) => {
+  const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
   return (
     <>
       {!isMobile && <div className={styles.footer_wrap}>
-        <footer className={styles.footer}>
+        <footer className={isLoading ? styles.contentLoad : styles.footer}>
 
           <div className={styles.footer_left}>
             <div className={styles.footer_logo}><Link to="/" >QPICK</Link></div>

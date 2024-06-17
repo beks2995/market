@@ -1,44 +1,45 @@
-import { FC, useState, useEffect, SetStateAction } from "react";
+import { FC, useState, useEffect, SetStateAction, Dispatch } from "react";
 import { Idata } from "../../interfaces";
 import { db } from "../../../../firebase/firestore";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import Card from "../../../../components/Card";
 import './Headphones.css'
-
-interface HeadphonesProps {
-    setFavoritedCount: React.Dispatch<React.SetStateAction<number>>;
+import { useDispatch } from "react-redux";
+import { changeLoadingState } from "../../../../store/reducers/IsLoading";
+interface Istates {
+    setInFavorited: Dispatch<SetStateAction<Array<Idata>>>
+    inFavorited: SetStateAction<Idata[]>
+    isLoading: boolean
 }
 
-const Headphones: FC<HeadphonesProps> = ({ setFavoritedCount }) => {
+const Headphones: FC<Istates> = ({isLoading, setInFavorited, inFavorited}) => {
     const [headphones, setHeadphones] = useState<Array<Idata>>([])
-    const [inFavorited, setInFavorited] = useState<SetStateAction<Idata[]>>([])
-    useEffect(() => {
-        const q = query(collection(db, "products/product_id/Headphones"));
+    useEffect (() => {
+        const q = query(collection(db, "items"));
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const arr: any = [];
             querySnapshot.forEach((doc) => {
-                arr.push(doc.data());
-            });
-            setHeadphones(arr.map((el: Idata) => ({ ...el, isFavorited: false })))
+                arr.push({...doc.data(), id: doc.id});
+            });            
+            setHeadphones(arr.filter((el: Idata) =>  el.categoryId.id === 'Headphones' && {...el, isFavorited: false}))
         });
         return () => unsubscribe()
-    }, [])
-    const clickHandle = (el: Idata) => {
-        el.isFavorited = !el.isFavorited
-        setInFavorited((prev: Idata[]) => prev.filter(el => el.isFavorited ? el : ''))
-        if (el.isFavorited) {
-            setInFavorited((prev: Idata[]) => [...prev, el])
-        }
-        setFavoritedCount(inFavorited.length + (el.isFavorited ? 1 : -1));
-        // Update favorited count
-    }
-    useEffect(() => {
-        localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
-    }, [inFavorited])
+    }, []) 
+ 
     return (
         <section className="headphones">
-            <p className="title">Наушники</p>
-            <Card data={headphones} clickHandle={clickHandle} />
+            {isLoading ? '' : <p className="title">Наушники</p>}
+            <div className="cards">
+                {
+                    headphones && headphones.map((el, indx) => {
+                        return <div className="card" key={indx}>
+                            <Card el={el} indx={indx} setInFavorited={setInFavorited} inFavorited={inFavorited} />
+                        </div>
+                    })
+                }
+            </div>
+
         </section>
     )
 }

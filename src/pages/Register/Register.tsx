@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 import { firebase } from '../../firebase/firebase'; // Import Firebase module
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'; // Import Firestore functions
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -11,7 +12,10 @@ const Register: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
-  const handleRegisterWithEmailAndPassword = async () => {
+  const db = getFirestore(); // Initialize Firestore
+
+  const handleRegisterWithEmailAndPassword = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form submission
     try {
       // Register user with email and password
       const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -19,10 +23,18 @@ const Register: React.FC = () => {
       await userCredential.user?.updateProfile({
         displayName: `${firstName} ${lastName}`
       });
+      // Add user to Firestore users collection
+      await setDoc(doc(db, 'users', userCredential.user?.uid ?? ''), {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        cart: [],
+        likes: []
+      });
       // Navigate to success page or home page
       navigate('/');
-      setIsLoggedIn(true)
-    } catch (error:any) {
+      setIsLoggedIn(true);
+    } catch (error: any) {
       // Handle registration error
       console.error('Registration error:', error.message);
     }
@@ -33,10 +45,25 @@ const Register: React.FC = () => {
       // Sign in with Google provider
       const provider = new firebase.auth.GoogleAuthProvider();
       const userCredential = await firebase.auth().signInWithPopup(provider);
+      const user = userCredential.user;
+      if (user) {
+        // Check if user already exists in Firestore
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (!userDoc.exists()) {
+          // Add user to Firestore users collection if not exists
+          await setDoc(doc(db, 'users', user.uid), {
+            firstName: user.displayName?.split(' ')[0] || '',
+            lastName: user.displayName?.split(' ')[1] || '',
+            email: user.email,
+            cart: [],
+            likes: []
+          });
+        }
+      }
       // Navigate to success page or home page
       navigate('/');
-      setIsLoggedIn(true)
-    } catch (error:any) {
+      setIsLoggedIn(true);
+    } catch (error: any) {
       // Handle registration error
       console.error('Google authentication error:', error.message);
     }
@@ -70,6 +97,3 @@ const Register: React.FC = () => {
 };
 
 export default Register;
-
-
-

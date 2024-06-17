@@ -1,0 +1,7 @@
+.adminPanel__container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(234, 234, 234);
+    height: 2024px;
+}

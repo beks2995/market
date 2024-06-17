@@ -16,9 +16,6 @@ export default function PriceTag({
           {`${oldPrice} сом`}
         </span>
       </div>
-      <span className="text-base text-primary-200 md:text-lg lg:text-xl">
-        {`-${discount}%`}
-      </span>
     </div>
   );
 }
