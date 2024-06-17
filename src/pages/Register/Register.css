@@ -4,14 +4,7 @@
     --font-family: 'Montserrat', sans-serif;
 }
 
- * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-} 
-
-.login-div {
+.register_div {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -19,35 +12,35 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     background: #fff;
     border-radius: 30px;
-
     padding: 23px 38px 38px 38px;
+    max-width: 85vw;
 }
 
-.login-div h3 {
+.register_div h3 {
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 17px;
     color: #000;
 }
 
-.login-div__closeButton {
+.register_div__closeButton {
     position: absolute;
     top: 9px;
     right: 19px;
 }
 
-.login-div__closeButton:hover{
+.register_div__closeButton:hover{
     cursor: pointer;
 }
 
-.login-div__form {
+.register_div__form {
     display: flex;
     flex-direction: column;
     gap: 41px;
     padding-top: 34px;
 }
 
-.login-div__form__inputs {
+.register_div__form__inputs {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -69,11 +62,11 @@ label::after {
     height: 18px;
 }
 
-.login-div__form__inp {
+.register_div__form__inp {
     background: #d6d6d6;
     border-radius: 15px;
     border: none;
-    padding: 14px 178px 13px 14px;
+    padding: 14px 13vw 13px 14px;
     box-sizing: border-box;
     width: 100%;
     font-family: var(--font-family);
@@ -82,7 +75,7 @@ label::after {
     color: #8e8e8e;
 }
 
-.login-div__form__submitButton {
+.register_div__form__submitButton {
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(67, 216, 84, 0.25);
@@ -96,11 +89,11 @@ label::after {
     margin-bottom: 10px;
 }
 
-.login-div__form__submitButton:hover{
+.register_div__form__submitButton:hover{
     cursor: pointer;
 }
 
-.login-div__form__googleButton{
+.register_div__form__googleButton{
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(67, 216, 84, 0.25);

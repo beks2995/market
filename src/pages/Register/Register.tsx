@@ -43,28 +43,28 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className='register-div'>
+    <div className='register_div'>
       <h3>Регистрация</h3>
-      <span className='register-div__closeButton' onClick={() => navigate("/")}>X</span>
-      <form className='register-div__form' onSubmit={handleRegisterWithEmailAndPassword}>
-        <div className="register-div__form__inputs">
+      <span className='register_div__closeButton' onClick={() => navigate("/")}>X</span>
+      <form className='register_div__form' onSubmit={handleRegisterWithEmailAndPassword}>
+        <div className="register_div__form__inputs">
           <label>
-            <input className='register-div__form__inp' type="text" placeholder='Имя' value={firstName} onChange={e => setFirstName(e.target.value)} required />
+            <input className='register_div__form__inp' type="text" placeholder='Имя' value={firstName} onChange={e => setFirstName(e.target.value)} required />
           </label>
           <label>
-            <input className='register-div__form__inp' type="text" placeholder='Фамилия' value={lastName} onChange={e => setLastName(e.target.value)} required />
+            <input className='register_div__form__inp' type="text" placeholder='Фамилия' value={lastName} onChange={e => setLastName(e.target.value)} required />
           </label>
           <label>
-            <input className='register-div__form__inp' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} required />
+            <input className='register_div__form__inp' type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} required />
           </label>
           <label>
-            <input className='register-div__form__inp' type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} required />
+            <input className='register_div__form__inp' type="password" placeholder='Пароль' value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
         </div>
-        <button className='register-div__form__submitButton' type='submit'>Регистрация с Email</button>
+        <button className='register_div__form__submitButton' type='submit'>Регистрация с Email</button>
       </form>
-      <div className='register-div__or'>или</div>
-      <button className='register-div__form__googleButton' onClick={handleRegisterWithGoogle}>Регистрация с Google</button>
+      <div className='register_div__or'>или</div>
+      <button className='register_div__form__googleButton' onClick={handleRegisterWithGoogle}>Регистрация с Google</button>
     </div>
   );
 };
