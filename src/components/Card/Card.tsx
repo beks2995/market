@@ -28,7 +28,7 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
     }, [inFavorited])
     
     return (
-        <div key={indx} className="card">
+        <div>
             <div className="card__top">
                 <div onClick={(e: MouseEvent<HTMLDivElement>) => clickHandle && clickHandle(el)}>
                     {
@@ -46,7 +46,7 @@ const Card = ({el, setInFavorited, inFavorited, indx}: IProps) => {
                 </div>
                 <div  className="card__top-img"><img src={el.images[0]} alt="" /></div>
             </div>
-        <Link to={`/product/${el.id}`}><Info el={el}/></Link>
+            <Link to={`/product/${el.id}`}><Info el={el}/></Link>
         <div className="card__estimation">
             <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.6268 17.6026L5.41618 21.9608L7.37647 13.8272L0.960754 8.38856L9.38215 7.72087L12.6268 0L15.8715 7.72087L24.2941 8.38856L17.8771 13.8272L19.8374 21.9608L12.6268 17.6026Z" fill="#FFCE7F"/>

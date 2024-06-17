@@ -33,7 +33,9 @@ const WirelessHP: FC<Istates> = ({isLoading, setInFavorited, inFavorited}) => {
             <div className="cards">
                 {
                     wirelessHeadphones && wirelessHeadphones.map((el, indx) => {
-                        return <Card el={el} indx={indx} setInFavorited={setInFavorited} inFavorited={inFavorited}/>
+                        return <div className="card" key={indx}>
+                            <Card el={el} indx={indx} setInFavorited={setInFavorited} inFavorited={inFavorited}/>
+                        </div>
 
                     })
                 }

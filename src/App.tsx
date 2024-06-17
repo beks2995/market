@@ -24,7 +24,6 @@ const App: FC = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 429);
-<<<<<<< HEAD
       // console.log('isMobile:', isMobile)
       window.addEventListener('resize', handleResize);
       return () => {
@@ -35,17 +34,6 @@ const App: FC = () => {
   useEffect(() => {
     setFavoritedCount(JSON.parse(localStorage.getItem('inFavorited') as any) !== null ? JSON.parse(localStorage.getItem('inFavorited') as any).length : '')
   }, [favoritedCount])
-=======
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
->>>>>>> fc0de560401e76736b6b99360bd64b72ad857f38
 
   return (
     <div>
