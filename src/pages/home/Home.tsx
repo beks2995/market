@@ -33,11 +33,13 @@ const Home: FC<Props>  = ({setInFavorited, inFavorited}) => {
         }, 500)
     }, [])
     return (
-        <main className="main">
+        <div className="main">
             <Top/>
-            <Headphones isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/> 
-            <WirelessHP isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/>
-        </main>
+            <div className="main_content">
+                <Headphones isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/> 
+                <WirelessHP isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/>
+            </div>
+        </div>
     )
 
 }

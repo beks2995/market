@@ -4,23 +4,27 @@ import Card from "../../components/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { changeLoadingState } from "../../store/reducers/IsLoading";
 import './Favorites.css'
-interface Props {
-    setInFavorited: Dispatch<SetStateAction<Idata[]>>
-    inFavorited: Array<Idata>
-}
+// interface Props {
+//     setInFavorited: Dispatch<SetStateAction<Idata[]>>
+//     inFavorited: Array<Idata>
+// }
 
-const Favorites:FC<Props> = ({inFavorited, setInFavorited}) => {
+const Favorites:FC = () => {
+    const [inFavorited, setInFavorited] = useState<Idata[]>([])
     const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
     const dispatch = useDispatch()
     useEffect(() => {
         setInFavorited(JSON.parse(localStorage.getItem('inFavorited') as any));
-    }, [JSON.parse(localStorage.getItem('inFavorited') as any)])
+    }, [])
     useEffect(() => {
         dispatch(changeLoadingState(true))
     }, [inFavorited])
     useEffect(() => {
         dispatch(changeLoadingState(false))
     }, [])
+    useEffect(() => {
+        localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
+    }, [inFavorited])
 
     return (
         <div className="favorite_products">

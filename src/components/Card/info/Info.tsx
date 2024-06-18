@@ -10,9 +10,10 @@ const Info: React.FC<Iprop> = ({el}) => {
         <div className="card__info">
             <b className="card__info-title">{el.name}</b>
             <div className="card__info-price">
-                <p className="card__price-after">{el.priceAfterDiscount}</p>
-                <p className="card__price-before">{el.priceBeforeDiscount}</p>
+                <p className="card__price-after">{el.priceWithDiscount}</p>
+                <p className="card__price-before">{el.price}</p>
             </div>
+            
         </div>
     )
 }

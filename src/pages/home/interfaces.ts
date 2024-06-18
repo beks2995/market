@@ -2,13 +2,13 @@ export interface Idata {
     id?: string;
     category: string;
     description: string;
-    defaultRating: string;
+    stock: string;
     images: string;
     inBasket: boolean;
     inFavorite: boolean;
     name: string;
-    priceAfterDiscount: string;
-    priceBeforeDiscount: string;
+    priceWithDiscount: string;
+    price: string;
     isFavorited: boolean;
     categoryId: {id : string}
 

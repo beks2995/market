@@ -1,33 +1,42 @@
 .top{
     display: flex;
-    border-radius: 30px;
-    height: 197px;
     justify-content: center;
-    align-items: center;
+}
+.top_text{
+    display: flex;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     background: #101010;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    height: 197px;
+    width: 1110px;
     margin-top: 22px;
     margin-bottom: 37px;
-}
-.top__text{
-    color: #fff;
-    font-weight: 600;
-    font-size: 30px;
 }
 .top__text_title{
     display: flex;
     gap: 12px;
     justify-content: center;
+    color: #fff;
+
 }
 .top__text_h1{
     font-weight: 600;
     font-size: 30px;
+    color: #fff;
+
 }
 .top__text_sub{
     font-weight: 600;
     font-size: 30px;
+    color: #fff;
+
 }
 .top__text_p{
     font-weight: 600;
-    font-size: 30px;   
+    font-size: 30px; 
+    color: #fff;
+  
 }

@@ -28,6 +28,7 @@ body {
 
 .Content{
   flex: 1;
+  /* margin: 0 auto; */
 }
 
 .text-stroke-1 {
