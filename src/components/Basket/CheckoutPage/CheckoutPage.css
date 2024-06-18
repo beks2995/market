@@ -319,3 +319,30 @@
     margin-top: 30px;
 }
 
+@media (max-width: 428px){
+    .order__decoration{
+        flex-direction: column;
+    }
+    .order__container{
+        background: rgb(255, 255, 255);
+    }
+    .order__decoration-container {
+        box-shadow: none;
+    }
+    .order__info-your{
+        box-shadow: none;
+    }
+    .order__payment{
+        box-shadow: none;
+    }
+    .order__number-comfirm{
+        box-shadow: none;
+    }
+    .order__title{
+        padding-left: 38px;
+        padding-top: 10px;
+    }
+    .order__finish{
+        margin-bottom: 25px;
+    }
+}
