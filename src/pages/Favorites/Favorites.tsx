@@ -18,9 +18,9 @@ const Favorites:FC = () => {
     }, [])
     useEffect(() => {
         dispatch(changeLoadingState(true))
-    }, [inFavorited])
-    useEffect(() => {
-        dispatch(changeLoadingState(false))
+        setTimeout(() => {
+            dispatch(changeLoadingState(false))
+        }, 500)
     }, [])
     useEffect(() => {
         localStorage.setItem("inFavorited", JSON.stringify(inFavorited))
@@ -28,7 +28,7 @@ const Favorites:FC = () => {
 
     return (
         <div className="favorite_products">
-            {isLoading ? <h2 className="favorite_products_title">Избранные</h2> : 'loading' }
+            {isLoading ? 'loading' : <h2 className="favorite_products_title">Избранные</h2> }
             <div className="cards">
                 {
                     inFavorited && inFavorited.length > 0

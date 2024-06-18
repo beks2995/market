@@ -11,3 +11,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media(max-width: 768px){
+    .main{
+        margin: 0px 20px;
+    }
+}
+@media(max-width: 1440px){
+    .main{
+        margin: 0px;
+    }
+}

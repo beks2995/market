@@ -6,7 +6,6 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Home from './pages/home';
 import ProductPage from './pages/product/ProductPage';
-import { useWindowSize } from 'react-use'; // Assuming you use a library for window size
 import UslovieService from './pages/UslovieService/UslovieService';
 import Contacts from './pages/Contacts/Contacts';
 import Footer from './components/Footer/Footer';
