@@ -1,26 +1,32 @@
-.container__priceInput{
+.container__priceInput {
     display: flex;
     gap: 40px;
 }
-form{
-    display: flex; 
+
+form {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: column;
     align-content: space-around;
 }
 
-.addDataForm__btn{
+.addDataForm__btn {
     color: rgb(255, 255, 255);
-font-family: Montserrat;
-font-size: 15px;
-font-weight: 500;
-text-align: center;
-border-radius: 10px;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 10px;
 
-box-shadow: 0px 0px 20px 0px rgba(67, 216, 84, 0.25);
-background: rgb(16, 16, 16);
-width: 955px;
-height: 85px;
-margin-top: 54px;
+    box-shadow: 0px 0px 20px 0px rgba(67, 216, 84, 0.25);
+    background: rgb(16, 16, 16);
+    width: 100%;
+    height: 85px;
+    margin-top: 54px;
+}
+@media (max-width: 428px){
+    .container__priceInput{
+        gap: 10px   ;
+    }
 }
