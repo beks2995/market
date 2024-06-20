@@ -21,3 +21,16 @@
     width: 730px;
     margin-top: 41px;
 }
+
+@media (max-width: 428px) {
+    .confirmation-message {
+        width: 338px;
+        height: 154px;
+    }
+    .confirmation-text{
+        padding-top: 45px;
+    }
+    .order-confirmation-finish{
+        margin-top: 80px;
+    }
+}

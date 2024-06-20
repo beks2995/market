@@ -256,7 +256,6 @@
 .order__number-input {
     border-radius: 15px;
     background: rgb(214, 214, 214);
-    width: 418px;
     height: 45px;
     border: none;
     padding-left: 20px;
@@ -271,7 +270,7 @@
 .order__number-span {
     position: absolute;
     top: 50%;
-    right: -165px;
+    right: 10px;
     transform: translateY(-50%);
     pointer-events: none;
     font-size: 18px;
@@ -295,7 +294,7 @@
 }
 
 .order__info {
-    width: 441px;
+    width: auto;
 }
 
 .order__finish {
@@ -313,9 +312,106 @@
     margin-top: 29px;
 }
 
-.order{
+.order {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
 
+@media (max-width: 428px) {
+    .order__decoration {
+        flex-direction: column;
+    }
+
+    .order__container {
+        background: rgb(255, 255, 255);
+        width: 100%;
+    }
+
+    .order__decoration-container {
+        box-shadow: none;
+    }
+
+    .order__info-your {
+        box-shadow: none;
+    }
+
+    .order__payment {
+        box-shadow: none;
+    }
+
+    .order__number-comfirm {
+        box-shadow: none;
+    }
+
+    .order__title {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .order__finish {
+        margin-bottom: 25px;
+    }
+
+    .order__decoration {}
+
+    .order__decoration-block {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .order__info-your {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .order__payment-total {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .order__number-comfirm {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .order__decoration-city {
+        width: 100%;
+    }
+
+    .order__decoration-input {
+        width: 100%;
+    }
+
+    .order__decoration-span {
+        right: 15px;
+
+    }
+
+    .order__decoration-home-block-first {
+        width: 100%;
+    }
+
+    .order__decoration-home-input {
+        width: 100%;
+    }
+
+    .order__decoration-home {
+        width: 100%;
+    }
+
+    .order__decoration-home-span-p {
+        right: 15px;
+    }
+
+    .order__decoration-home-span {
+        right: 15px;
+    }
+    .order__number{
+        width: 100%;
+    }
+    .order__number-input{
+        width: 100%;
+    }
+}
