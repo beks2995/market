@@ -37,6 +37,8 @@ const App: FC = () => {
     setFavoritedCount(JSON.parse(localStorage.getItem('inFavorited') as any) !== null ? JSON.parse(localStorage.getItem('inFavorited') as any).length : '')
   }, [inFavorited])
 
+  const renderFooter = !isAdminRoute;
+
   return (
     <div>
       <Header favoritedCount={favoritedCount} isMobile={isMobile} /> 
@@ -58,7 +60,7 @@ const App: FC = () => {
           <Route path="/register" element={<Register />} />
         </Routes>
       </main>
-      <Footer isMobile={isMobile}/>
+      {renderFooter && <Footer isMobile={isMobile} />}
     </div>
   );
 

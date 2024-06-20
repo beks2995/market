@@ -42,7 +42,7 @@ const Delivery: React.FC<DeliveryProps> = ({ onDeliveryChange }) => {
                     <p className='delivery__text'><img 
                     src='https://i.postimg.cc/vTMGX48r/Vector-3.png' alt='car'
                         onChange={() => handleDeliveryChange('courier')}
-                    />Доставка курьером - 499 т</p>
+                    />Доставка курьером</p>
                     <img src="https://i.postimg.cc/BQ24kcPx/Vector-4.png" alt="" className="delivery__img" />
                     </div>
                     <p className="delivery__cost-text">499 сом</p>

@@ -132,7 +132,7 @@ const Cart: React.FC = () => {
                             <div className="cart__product-blok">
                                 <div key={index} className="cart__product">
                                     <div className='cart__product-view'>
-                                        <img src={item.images} alt={item.name} style={{ width: '146px', height: '136px' }} />
+                                        <img src={item.images} alt={item.name} className='cart__item-img-block' />
                                         <p>{
                                             <QuantityControl
                                                 itemId={item.id}

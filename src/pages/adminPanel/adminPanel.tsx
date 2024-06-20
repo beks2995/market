@@ -7,11 +7,11 @@ import AdminOrderDetails from '../../components/Admin/OrderDetailsPage/OrderDeta
 import NavBar from '../../components/Admin/Navigation/Navigation'
 import HeaderAdminPanel from '../../components/Admin/HeaderAdminPanel/HeaderAdminPanel'
 import './adminPanel.css'
+import Header from '../../components/Header/Header'
 
 const AdminPanel: React.FC = () => {
   return (
     <div className='adminPanel__container'>
-      <HeaderAdminPanel />
       <NavBar />
       <div className='adminPanel__content'>
         <Routes>

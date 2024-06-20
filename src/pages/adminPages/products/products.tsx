@@ -1,14 +1,15 @@
+import React, { FC, useState, SetStateAction, useEffect, Dispatch } from "react";
+import Home from "../../home/Home";
+import { Idata } from "../../home/interfaces";
 
-import Headphones from "../../home/sections/Headphones"
-import WirelessHP from "../../home/sections/WirelessHeadphones"
+const Products: FC = () => {
+    const [inFavorited, setInFavorited] = useState<Idata[]>([]);
 
-    const products = () => {
-        return(
-            <div>
-                {/* <Headphones/> */}
-                {/* <WirelessHP/> */}
-            </div>  
-        )
-    }
+    return (
+        <div>
+            <Home setInFavorited={setInFavorited} inFavorited={inFavorited} />
+        </div>
+    );
+}
 
-    export default products
+export default Products;

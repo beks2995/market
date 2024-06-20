@@ -1,6 +1,7 @@
 import { FC, useState, SetStateAction, useEffect, Dispatch } from "react";
 import './Home.css'
 import Top from "./sections/top/index";
+import { useLocation } from "react-router-dom";
 import Headphones from "../../pages/home/sections/Headphones";
 import WirelessHP from "./sections/WirelessHeadphones";
 import { Idata } from "./interfaces";
@@ -14,6 +15,7 @@ interface Props {
 const Home: FC<Props>  = ({setInFavorited, inFavorited}) => {
     const isLoading = useSelector((s: any) => s.isLoadingContentSlice.isLoading)
     const dispatch = useDispatch()
+    const location = useLocation()
     useEffect(() => {
         if(JSON.parse(localStorage.getItem('inFavorited') as any) === null){
             setInFavorited([])
@@ -34,14 +36,13 @@ const Home: FC<Props>  = ({setInFavorited, inFavorited}) => {
     }, [])
     return (
         <div className="main">
-            <Top/>
+            {location.pathname !== '/admin/products' && <Top />}
             <div className="main_content">
                 <Headphones isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/> 
                 <WirelessHP isLoading={isLoading} inFavorited={inFavorited} setInFavorited={setInFavorited}/>
             </div>
         </div>
     )
-
 }
 
 

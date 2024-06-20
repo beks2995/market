@@ -24,7 +24,22 @@ nav ul {
     text-decoration: underline;
   }
   .navigation__container{
-    width: 1155px;
+    width: 985px;
     justify-content: start;
+    display: flex;
   }
-  
+  @media (max-width: 428px){
+    .navigation__container{
+      width: 100%;
+    }
+    nav ul li a {
+      color: rgb(0, 0, 0);
+      font-family: Montserrat;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none ;
+    }
+    nav ul{
+      gap: 20px;
+    }
+  }
