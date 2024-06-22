@@ -4,7 +4,9 @@ import NavigationMenu from './NavigationMenu';
 import { useNavigate } from 'react-router-dom';
 import { firebase } from '../../firebase/firebase';
 import styles from './Header.module.css';
-
+import useAuth from '../../hooks/useAuth';
+import { getDoc, doc } from '@firebase/firestore';
+import { db } from '../../firebase/firestore';
 
 interface HeaderProps {
     favoritedCount: number;
@@ -21,7 +23,23 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
     const [cartCount, setCartCount] = useState(0)
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
+    const user = useAuth(); 
 
+    useEffect(() => {
+        const fetchCartCount = async () => {
+            if (user) {
+                const userDocRef = doc(db, 'users', user.uid);
+                const userDocSnap = await getDoc(userDocRef);
+                if (userDocSnap.exists()) {
+                    const cartItems = userDocSnap.data()?.cart || [];
+                    const totalItems = cartItems.reduce((sum: number, item: any) => sum + item.quantity, 0);
+                    setCartCount(totalItems);
+                }
+            }
+        };
+
+        fetchCartCount();
+    }, [user]);
 
     const handleButtonClick = () => {
         setProfileOpen(!profileOpen);
@@ -115,10 +133,8 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                             </Link>
                         </div>
                         <div className={styles.iconPositionDiv}>
-
-                            <Link to="/cart"
-                                className={styles.cart}
-                            >
+                        <Link to="/cart" className={styles.cart}>
+                            
                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.60005 6.04602L0 2.50536L1.57079 0.959999L5.16972 4.50176H22.0898C22.2629 4.50175 22.4335 4.54153 22.5881 4.61792C22.7427 4.69432 22.8771 4.80522 22.9804 4.94177C23.0837 5.07832 23.1531 5.23674 23.1832 5.40439C23.2132 5.57203 23.203 5.74426 23.1533 5.90732L20.4891 14.6443C20.4205 14.8694 20.28 15.0667 20.0885 15.207C19.8969 15.3473 19.6644 15.423 19.4256 15.423H5.82024V17.6073H18.0313V19.7915H4.71014C4.41573 19.7915 4.13337 19.6764 3.92519 19.4716C3.717 19.2668 3.60005 18.989 3.60005 18.6994V6.04602ZM5.82024 6.68601V13.2388H18.5997L20.5979 6.68601H5.82024ZM5.26519 24.16C4.82357 24.16 4.40003 23.9874 4.08776 23.6802C3.77548 23.373 3.60005 22.9563 3.60005 22.5218C3.60005 22.0873 3.77548 21.6707 4.08776 21.3634C4.40003 21.0562 4.82357 20.8836 5.26519 20.8836C5.70682 20.8836 6.13035 21.0562 6.44263 21.3634C6.7549 21.6707 6.93034 22.0873 6.93034 22.5218C6.93034 22.9563 6.7549 23.373 6.44263 23.6802C6.13035 23.9874 5.70682 24.16 5.26519 24.16ZM18.5864 24.16C18.1447 24.16 17.7212 23.9874 17.4089 23.6802C17.0966 23.373 16.9212 22.9563 16.9212 22.5218C16.9212 22.0873 17.0966 21.6707 17.4089 21.3634C17.7212 21.0562 18.1447 20.8836 18.5864 20.8836C19.028 20.8836 19.4515 21.0562 19.7638 21.3634C20.0761 21.6707 20.2515 22.0873 20.2515 22.5218C20.2515 22.9563 20.0761 23.373 19.7638 23.6802C19.4515 23.9874 19.028 24.16 18.5864 24.16Z" fill="#838383" /></svg>
                                 {/* Shopping cart icon */}
 
@@ -230,16 +246,10 @@ const Header: React.FC<HeaderProps> = ({ favoritedCount, isMobile }) => {
                                             </Link>
                                         </li>
                                     </ul>
-
-
-
-
                                     <div >
-
                                     </div>
 
                                 </nav>
-
                             }
                         </>
                     }
