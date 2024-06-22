@@ -32,69 +32,48 @@ body {
 }
 
 .UslovieServiceCards {
+    margin-top: 41px;
+    margin-left: 200px;
     display: flex;
     flex-direction: column;
     row-gap: 35px;
 }
 
-.UsFooter {
-    margin-top: 37px;
-    padding: 0 100px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.UsFooterLanguage {
-    display: flex;
-    gap: 10px;
-}
-
-.map {
-    width: 722px;
-    height: 424px;
-
-
-}
-
-.contacts_title {
+.UslovieServiceButtonToMain {
+    border-radius: 15px;
+    width: 380px;
+    height: 65px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    background: #101010;
     font-weight: 600;
     font-size: 17px;
-    color: #1c1c27;
+    color: #fff;
+    display: none;
 }
 
-.map-box {
-    margin-left: 260px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-    background: #fff;
-    border-radius: 30px;
-    width: 720px;
-    height: 500px;
-    padding: 15px 20px 50px 17px;
+@media (max-width:428px) {
+    .uslovieServiceCard {
+        width: 380px;
+        height: 394px;
+        margin-left: -175px;
+        padding: 22px 22px 435px 27px;
+    }
+
+    .uslovieServiceDescription {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 17px;
+    }
+    .UslovieServiceButtonToMain{
+        display: block;
+        margin-top: 30px;
+        margin-left: 25px;
+    }
+    .UslovieSericeButtonContainer{
+        padding-bottom: 25px;
+    }
 }
 
-.Contacts_top {
-    display: flex;
-}
-
-.contacts_address {
-    font-weight: 500;
-    font-size: 15px;
-    color: #000;
-}
-
-.address_floor {
-    margin-top: -10px;
-    font-weight: 500;
-    font-size: 13px;
-    color: #838383;
-}
-
-.Contacts_number {
-    font-weight: 600;
-    font-size: 25px;
-    color: #000;
-    margin-left: 250px;
-}
 /* ul li {
     list-style-type: none;
 }
@@ -102,7 +81,7 @@ nav{
 margin-top: -30px;
 }
 nav img{
-    margin-bottom: -18px;
+    
     width: 97px;
     height: 97px;
 } */

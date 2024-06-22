@@ -1,0 +1,148 @@
+.map {
+    padding: 10px 20px;
+    width: 722px;
+    height: 424px;
+    padding-left: 10px;
+    margin-left: -10px;
+
+
+}
+
+.contacts_title {
+    font-weight: 600;
+    font-size: 17px;
+    color: #1c1c27;
+}
+
+.map-box {
+    margin-left: 260px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 30px;
+    padding: 15px 20px 27px 17px;
+}
+
+.Contacts_top {
+    display: flex;
+    margin-top: 20px;
+}
+
+.ContactsAddressDiv {
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+}
+
+.contacts_address {
+
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+}
+
+.address_floor {
+    margin-top: -5px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #838383;
+}
+
+.Contacts_number {
+    display: flex;
+    gap: 28px;
+    font-weight: 600;
+    font-size: 25px;
+    color: #000;
+    margin-top: 144px;
+    margin-left: 250px;
+}
+
+.Contacts_nav {
+    margin-top: -670px;
+    margin-left: 1050px;
+    display: flex;
+
+}
+
+.Contacts_ul {
+    flex-direction: column;
+    gap: 1px;
+    ;
+}
+
+.Contacts_nav img {
+    width: 97px;
+    height: 97px;
+    margin-bottom: -18px;
+}
+
+.ContactsButtonToMain {
+    border-radius: 15px;
+    width: 380px;
+    height: 65px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    background: #101010;
+    font-weight: 600;
+    font-size: 17px;
+    color: #fff;
+    display: none;
+}
+
+@media(max-width:1150px) {
+    .Contacts_nav {
+        margin-top: 0;
+        margin-left: 10%;
+    }
+}
+
+@media (max-width:428px) {
+    .Contacts_ul {
+        margin-left: -45px;
+        margin-top: 0%;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .Contacts_nav img {
+        width: 214px;
+        height: auto;
+    }
+
+    .map-box {
+        margin-left: 5%;
+        height: 297px;
+        width: 380px;
+    }
+
+    .map {
+        width: 345px;
+
+        margin-left: -3%;
+    }
+
+    .ContactsAddressDiv {
+        margin-top: -65%;
+    }
+
+    .contacts_title {
+        font-weight: 600;
+        font-size: 17px;
+    }
+
+    .Contacts_number {
+        margin-top: -122px;
+        margin-left: 110px;
+        gap: 1px;
+    }
+    .ContactsButtonToMain{
+        margin-top: 39px;
+        display: block;
+        margin-left: 25px;
+    }
+    .ContactsButtonContainer{
+        padding-bottom: 34px;
+    }
+    
+}
