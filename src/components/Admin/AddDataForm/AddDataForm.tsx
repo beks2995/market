@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { getFirestore, collection, addDoc, setDoc, getDoc, doc, DocumentReference } from 'firebase/firestore'
 import { initializeApp, getApps } from 'firebase/app'
 import ImageInput from '../ImageInput/ImageInput'
@@ -73,6 +73,7 @@ const AddDataForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (window.confirm('Вы уверены, что хотите добавить это устройство?')){
     try {
       if (categoryRef) {
         const categoryDocSnapshot = await getDoc(categoryRef);
@@ -104,7 +105,7 @@ const AddDataForm: React.FC = () => {
       }
     } catch (error) {
       console.error("Ошибка при добавлении устройства: ", error);
-    }
+    }}
   };
 
   return (

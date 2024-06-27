@@ -21,3 +21,15 @@
     font-size: 17px;
     color: #838383;
 }
+.delete-button {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;    
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}

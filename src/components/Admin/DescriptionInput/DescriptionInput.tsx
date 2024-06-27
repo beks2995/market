@@ -1,4 +1,3 @@
-import React from 'react'
 import './DescriptionInput.css'
 
 interface DescriptionInputProps {

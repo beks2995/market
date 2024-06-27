@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { db } from '../../../firebase/firestore';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import useAuth from '../../../hooks/useAuth';

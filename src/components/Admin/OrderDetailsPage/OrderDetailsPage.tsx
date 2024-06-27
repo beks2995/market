@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../../../firebase/firestore';
-import { doc, getDoc } from 'firebase/firestore';
-import './OrderDetailsPage.css'
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import './OrderDetailsPage.css';
 
 const AdminOrderDetails: React.FC = () => {
     const { orderId } = useParams<{ orderId: string }>()
@@ -18,7 +18,15 @@ const AdminOrderDetails: React.FC = () => {
             }
         }
 
+        const markOrderAsViewed = async () => {
+            if (orderId) {
+                const orderRef = doc(db, 'orders', orderId)
+                await updateDoc(orderRef, { viewed: true })
+            }
+        }
+
         fetchOrder()
+        markOrderAsViewed()
     }, [orderId])
 
     if (!order) {

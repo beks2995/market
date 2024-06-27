@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../../firebase/firestore';
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import './orders.css'
+import './orders.css';
 
 const AdminOrders: React.FC = () => {
     const [orders, setOrders] = useState<any[]>([])
@@ -68,7 +68,7 @@ const AdminOrders: React.FC = () => {
                         <p className='orders__number'>Номер заказа: {order.orderNumber}</p>
                         <p className='orders__number'>Дата: {new Date(order.createdAt.seconds * 1000).toLocaleDateString()}</p>
                         <p className='orders__number'>Общая сумма: {order.totalAmount} сом</p>
-                        <p className='orders__viewed'>{order.viewed ? 'Заказ просмотрен' : 'Заказ не просмотрен'}</p> 
+                        <p className='orders__viewed'>{order.viewed ? 'Заказ просмотрен' : 'Заказ не просмотрен'}</p>
                         <div className='orders__actions'>
                             {!order.viewed && (
                                 <button type="button" onClick={(event) => markOrderAsViewed(order.id, event)}>Пометить как просмотренный</button>

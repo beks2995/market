@@ -1,4 +1,4 @@
-    import React from 'react';
+
     import { ShoppingCartIcon } from '@heroicons/react/24/outline';
     import { db } from '../../../firebase/firestore';
     import { doc, updateDoc, arrayUnion } from 'firebase/firestore';
